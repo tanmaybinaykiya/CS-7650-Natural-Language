@@ -1,6 +1,6 @@
 from gtnlplib.constants import OFFSET
 from gtnlplib import clf_base, evaluation
-
+from collections import Counter
 import numpy as np
 from collections import defaultdict
 
@@ -8,7 +8,7 @@ from collections import defaultdict
 def get_corpus_counts(x,y,label):
     """Compute corpus counts of words for all documents with a given label.
 
-    :param x: list of counts, one per instance
+    :param x: list of Counters, one per instance
     :param y: list of labels, one per instance
     :param label: desired label for corpus counts
     :returns: defaultdict of corpus counts
@@ -16,7 +16,13 @@ def get_corpus_counts(x,y,label):
 
     """
 
-    raise NotImplementedError
+    final = Counter()
+
+    for (index, yi) in enumerate(y):
+        if label == yi:
+            final = x[index] + final
+
+    return defaultdict(float, final)
 
 # deliverable 3.2
 def estimate_pxy(x,y,label,smoothing,vocab):
@@ -32,6 +38,8 @@ def estimate_pxy(x,y,label,smoothing,vocab):
     :rtype: defaultdict of log probabilities per word
 
     '''
+
+
 
     raise NotImplementedError
 

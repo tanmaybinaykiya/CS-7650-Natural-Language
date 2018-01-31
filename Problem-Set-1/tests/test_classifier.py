@@ -11,12 +11,12 @@ def setup_module():
     global labels
     global vocab
 
-    y_tr, x_tr = preproc.read_data('lyrics-train.csv', preprocessor=preproc.bag_of_words)
+    y_tr, x_tr = preproc.read_data('../lyrics-train.csv', preprocessor=preproc.bag_of_words)
     labels = set(y_tr)
 
     counts_tr = preproc.aggregate_counts(x_tr)
 
-    y_dv, x_dv = preproc.read_data('lyrics-dev.csv', preprocessor=preproc.bag_of_words)
+    y_dv, x_dv = preproc.read_data('../lyrics-dev.csv', preprocessor=preproc.bag_of_words)
 
     x_tr_pruned, vocab = preproc.prune_vocabulary(counts_tr, x_tr, 10)
     x_dv_pruned, _ = preproc.prune_vocabulary(counts_tr, x_dv, 10)

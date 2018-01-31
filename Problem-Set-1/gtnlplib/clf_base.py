@@ -39,7 +39,7 @@ def predict(base_features, weights, labels):
     prediction function
 
     :param base_features: a dictionary of base features and counts
-    :param weights: a defaultdict of features and weights. features are tuples (label,base_feature).
+    :param weights: a defaultdict of features and weights. features are tuples (label, base_feature).
     :param labels: a list of candidate labels
     :returns: top scoring label, scores of all labels
     :rtype: string, dict

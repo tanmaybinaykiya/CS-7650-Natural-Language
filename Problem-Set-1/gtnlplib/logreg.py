@@ -6,28 +6,31 @@ from scipy.misc import logsumexp
 import matplotlib.pyplot as plt
 from torch import optim
 
+
 # deliverable 5.2
 def build_linear(X_tr, Y_tr):
-    '''
+    """
     Build a linear model in torch
 
     :param X_tr: the set of training documents
     :param Y_tr: the set of training labels
     :returns: PyTorch linear model
     :rtype: PyTorch model
-    '''
-    #change these
-    size1 = 100
-    size2 = 2
+
+    """
+
+    size1 = X_tr.shape[1]
+    size2 = len(set(Y_tr))
 
     model = torch.nn.Sequential()
-    model.add_module("Linear",torch.nn.Linear(size1, size2, bias = True))
+    model.add_module("Linear", torch.nn.Linear(size1, size2, bias=True))
 
     return model
 
+
 # deliverable 5.3
 def log_softmax(scores):
-    '''
+    """
     Compute the (log of the) softmax given the scores
 
     Hint: Use logsumexp
@@ -35,33 +38,33 @@ def log_softmax(scores):
     :param scores: output of linear model as a numpy array
     :returns: the softmax result
     :rtype: numpy array
-    '''
+    """
 
-    raise NotImplementedError
+    return scores - logsumexp(scores, axis=1)[:, np.newaxis]
+
 
 # deliverable 5.4
 def nll_loss(logP, Y_tr):
-    '''
+    """
     Compute the neg-log likelihood loss from log softmax probabilities, averaged across documents
-
     return the loss in a number
+
     :param logP: output of log softmax
     :param Y_tr: the set of training labels
     :returns: the NLL loss
     :rtype: float
-    '''
+    """
+    return -np.average(logP[np.arange(logP.shape[0]), Y_tr])
 
-    raise NotImplementedError
 
-
-######################### helper code
+# helper code
 def train_model(loss, model, X_tr_var, Y_tr_var,
-                num_its = 200,
-                X_dv_var = None,
-                Y_dv_var = None,
+                num_its=200,
+                X_dv_var=None,
+                Y_dv_var=None,
                 status_frequency=10,
-                optim_args = {'lr':0.002,'momentum':0},
-                param_file = 'best.params'):
+                optim_args={'lr': 0.002,'momentum': 0},
+                param_file='best.params'):
 
     # initialize optimizer
     optimizer = optim.SGD(model.parameters(), **optim_args)
@@ -105,12 +108,11 @@ def train_model(loss, model, X_tr_var, Y_tr_var,
     return model, losses, accuracies
 
 
-
 def plot_results(losses, accuracies):
     fig,ax = plt.subplots(1,2,figsize=[12,2])
     ax[0].plot(losses)
     ax[0].set_ylabel('loss')
-    ax[0].set_xlabel('iteration');
-    ax[1].plot(accuracies);
+    ax[0].set_xlabel('iteration')
+    ax[1].plot(accuracies)
     ax[1].set_ylabel('dev set accuracy')
-    ax[1].set_xlabel('iteration');
+    ax[1].set_xlabel('iteration')

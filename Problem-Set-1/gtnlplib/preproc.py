@@ -92,8 +92,18 @@ def make_numpy(bags_of_words, vocab):
     :returns: the bags of words as a matrix
     :rtype: numpy array
     """
-    # vocab = sorted(vocab)
-    raise NotImplementedError
+    vocab = sorted(vocab)
+    V = len(vocab)
+    N = len(bags_of_words)
+    print("V:", V, "N:", N)
+
+    np_bag_of_words = np.zeros(shape=(N, V))
+
+    for i in range(N):
+        for (j, _type) in enumerate(vocab):
+            np_bag_of_words[i, j] = bags_of_words[i][_type[0]]
+
+    return np_bag_of_words
 
 
 # helper code

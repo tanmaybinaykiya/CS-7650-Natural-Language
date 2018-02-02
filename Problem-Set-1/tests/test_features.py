@@ -3,10 +3,11 @@ from gtnlplib import preproc, clf_base, constants, hand_weights, evaluation, nai
 import numpy as np
 import torch
 
+
 def setup_module():
     global vocab, label_set, x_tr_pruned, X_tr
 
-    y_tr,x_tr = preproc.read_data('lyrics-train.csv',preprocessor=preproc.bag_of_words)
+    y_tr,x_tr = preproc.read_data('../lyrics-train.csv',preprocessor=preproc.bag_of_words)
     labels = set(y_tr)
 
     counts_tr = preproc.aggregate_counts(x_tr)
@@ -15,6 +16,7 @@ def setup_module():
 
     X_tr = preproc.make_numpy(x_tr_pruned,vocab)
     label_set = sorted(list(set(y_tr)))
+
 
 def test_d6_1_topfeat_numpy():
     top_feats_two = features.get_top_features_for_label_numpy(hand_weights.theta_hand,'2000s',3)
@@ -25,15 +27,17 @@ def test_d6_1_topfeat_numpy():
     eq_(top_feats_eighty[0],(('1980s', 'tonight'), 0.1))
     eq_(len(top_feats_eighty),1)
 
+
 def test_d6_2_topfeat_torch():
 	global vocab, label_set
-	model_test = torch.load('tests/test_weights.torch')
+	model_test = torch.load('./test_weights.torch')
 
 	top_feats_two = features.get_top_features_for_label_torch(model_test, vocab, label_set,'2000s',5)
 	eq_(top_feats_two, ['like', 'this', 'im', 'girl', 'up'])
 
 	top_feats_nine = features.get_top_features_for_label_torch(model_test, vocab, label_set,'1990s',7)
 	eq_(top_feats_nine, ['here', 'power', 'jam', 'saw', 'yeah', 'want', 'yall'])
+
 
 def test_d7_1_token_type_ratio():
 	global X_tr
@@ -44,6 +48,7 @@ def test_d7_1_token_type_ratio():
 	assert_almost_equals(ratios[2], 1.91139, places=2)
 	assert_almost_equals(ratios[3], 2.31884, places=2)
 	assert_almost_equals(ratios[4], 6.18868, places=2)
+
 
 def test_d7_2_discretize():
 	global X_tr

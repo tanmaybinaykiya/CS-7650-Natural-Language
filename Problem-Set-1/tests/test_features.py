@@ -29,33 +29,33 @@ def test_d6_1_topfeat_numpy():
 
 
 def test_d6_2_topfeat_torch():
-	global vocab, label_set
-	model_test = torch.load('./test_weights.torch')
+    global vocab, label_set
+    model_test = torch.load('./test_weights.torch')
 
-	top_feats_two = features.get_top_features_for_label_torch(model_test, vocab, label_set,'2000s',5)
-	eq_(top_feats_two, ['like', 'this', 'im', 'girl', 'up'])
+    top_feats_two = features.get_top_features_for_label_torch(model_test, vocab, label_set,'2000s',5)
+    eq_(top_feats_two, ['like', 'this', 'im', 'girl', 'up'])
 
-	top_feats_nine = features.get_top_features_for_label_torch(model_test, vocab, label_set,'1990s',7)
-	eq_(top_feats_nine, ['here', 'power', 'jam', 'saw', 'yeah', 'want', 'yall'])
+    top_feats_nine = features.get_top_features_for_label_torch(model_test, vocab, label_set,'1990s',7)
+    eq_(top_feats_nine, ['here', 'power', 'jam', 'saw', 'yeah', 'want', 'yall'])
 
 
 def test_d7_1_token_type_ratio():
-	global X_tr
+    global X_tr
 
-	ratios = [features.get_token_type_ratio(X_tr[i]) for i in range(5)]
-	assert_almost_equals(ratios[0], 5.08333, places=2)
-	assert_almost_equals(ratios[1], 2.6, places=2)
-	assert_almost_equals(ratios[2], 1.91139, places=2)
-	assert_almost_equals(ratios[3], 2.31884, places=2)
-	assert_almost_equals(ratios[4], 6.18868, places=2)
+    ratios = [features.get_token_type_ratio(X_tr[i]) for i in range(5)]
+    assert_almost_equals(ratios[0], 5.08333, places=2)
+    assert_almost_equals(ratios[1], 2.6, places=2)
+    assert_almost_equals(ratios[2], 1.91139, places=2)
+    assert_almost_equals(ratios[3], 2.31884, places=2)
+    assert_almost_equals(ratios[4], 6.18868, places=2)
 
 
 def test_d7_2_discretize():
-	global X_tr
+    global X_tr
 
-	X_tr_new = features.concat_ttr_binned_features(X_tr)
-	eq_(X_tr_new.shape[1], 4882)
-	eq_(X_tr_new[0][-2], 1)
-	eq_(X_tr_new[4][-1], 1)
-	eq_(X_tr_new[4][-2], 0)
-	eq_(X_tr_new[1][98], 3)
+    X_tr_new = features.concat_ttr_binned_features(X_tr)
+    eq_(X_tr_new.shape[1], 4882)
+    eq_(X_tr_new[0][-2], 1)
+    eq_(X_tr_new[4][-1], 1)
+    eq_(X_tr_new[4][-2], 0)
+    eq_(X_tr_new[1][98], 3)

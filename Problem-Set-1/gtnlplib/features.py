@@ -57,8 +57,6 @@ def get_top_features_for_label_torch(model, vocab, label_set, label, k=5):
 
     return [i[0][0] for i in final_list]
 
-    # raise NotImplementedError
-
 
 # deliverable 7.1
 def get_token_type_ratio(counts):
@@ -70,8 +68,23 @@ def get_token_type_ratio(counts):
     :rtype: float
 
     """
-    
-    raise NotImplementedError
+
+    return np.sum(counts) / np.count_nonzero(counts)
+
+
+def get_token_type_ratio_np(counts_arr):
+    """
+    compute the ratio of tokens to types
+
+    :param counts: bag of words feature for a song, as a numpy array
+    :returns: ratio of tokens to types
+    :rtype: float
+
+    """
+    num = np.sum(counts_arr, axis=1)
+    denom = np.count_nonzero(counts_arr, axis=1)
+
+    return np.divide(num, denom, out=np.zeros_like(num), where=denom != 0)
 
 
 # deliverable 7.2
@@ -80,10 +93,27 @@ def concat_ttr_binned_features(data):
     Discretize your token-type ratio feature into bins.
     Then concatenate your result to the variable data
 
-    :param data: Bag of words features (e.g. X_tr)
+    :param data: Bag of words features (e.g. X_tr), as a numpy array
     :returns: Concatenated feature array [Nx(V+7)]
     :rtype: numpy array
 
     """
-    
-    raise NotImplementedError
+
+    K = 7
+
+    # N, V = data.shape
+    # ttr = np.zeros((N, 7))
+
+    # for (index, datum) in enumerate(data):
+    #     ttr[index] = get_token_type_ratio(data)
+
+    ttr = get_token_type_ratio_np(data)
+    bins = np.array([1, 2, 3, 4, 5, 6, float("inf")])
+
+    new_feature = np.digitize(ttr, bins, right=False)
+    new_feature = (np.arange(K) == new_feature[:, np.newaxis]) + 0
+
+    print("dim new_feature:", new_feature.shape)
+    print("dim data:", data.shape)
+
+    return np.concatenate((data, new_feature), axis=1)

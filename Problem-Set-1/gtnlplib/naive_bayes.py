@@ -41,17 +41,6 @@ def estimate_pxy(x, y, label, smoothing, vocab):
 
     """
 
-    # phi_y_j = (smoothing + count(y, j)) / ( V x smoothing + sumn(j')(count(y, j') ) )
-    # count(y, j) refers to the count of word j in documents with label y.
-
-    # print("X:", x)
-    # print("Y:", y)
-    # print("label:", label)
-    # print("smoothing:", smoothing)
-    # print("vocab:", vocab)
-
-    #####################################################################
-
     V = len(vocab)
 
     all_docs_with_label = [x[i] for i in range(len(y)) if y[i] == label]
@@ -65,7 +54,7 @@ def estimate_pxy(x, y, label, smoothing, vocab):
 
     log_phi = defaultdict(float)
 
-    denom = np.log(no_of_words_in_docs_with_label + ((V+1) * smoothing))
+    denom = np.log(no_of_words_in_docs_with_label + (V * smoothing))
     for (word, _) in vocab:
         log_phi[word] = np.log(count_aggregator_for_label[word] + smoothing) - denom
 
@@ -94,15 +83,23 @@ def estimate_nb(x, y, smoothing):
 
     unique_labels = list(set(y))
 
-    vocab = defaultdict()
+    label_counter = Counter(y)
+
+    vocab_dict = Counter()
 
     for xi in x:
-        vocab.update(xi)
+        vocab_dict.update(xi)
 
-    theta = []
+    vocab = set()
+    for item in vocab_dict.items():
+        vocab.add((item, vocab_dict[item]))
+
+    theta = defaultdict()
 
     for label in unique_labels:
-        theta.append(estimate_pxy(x, y, label, smoothing, vocab))
+        log_phi = estimate_pxy(x, y, label, smoothing, vocab)
+        theta.update({(label, phi_i[0][0]): phi_i[1] for phi_i in log_phi.items()})
+        theta.update({(label, OFFSET): np.log(label_counter[label])})
 
     return theta
 
@@ -123,3 +120,9 @@ def find_best_smoother(x_tr, y_tr, x_dv, y_dv, smoothers):
     """
 
     raise NotImplementedError
+
+
+
+
+
+

@@ -24,7 +24,7 @@ def make_feature_vector(base_features, label):
     :rtype: dict
     '''
 
-    feature_vector = {}
+    feature_vector = defaultdict(float)
 
     for el in base_features:
         feature_vector[(label, el)] = base_features[el]
@@ -46,6 +46,10 @@ def predict(base_features, weights, labels):
     '''
 
     # print("TYPES:", base_features, "\nWeights:", weights, "\nLabels:", labels)
+
+    # assert (type(base_features) == 'Counter')
+    # assert (type(weights) == 'defaultdict')
+    # assert (type(labels) == 'list')
 
     scores = {}
 

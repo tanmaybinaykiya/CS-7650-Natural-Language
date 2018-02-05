@@ -7,7 +7,7 @@ import torch
 def setup_module():
     global vocab, label_set, x_tr_pruned, X_tr
 
-    y_tr,x_tr = preproc.read_data('../lyrics-train.csv',preprocessor=preproc.bag_of_words)
+    y_tr,x_tr = preproc.read_data('lyrics-train.csv',preprocessor=preproc.bag_of_words)
     labels = set(y_tr)
 
     counts_tr = preproc.aggregate_counts(x_tr)
@@ -30,7 +30,7 @@ def test_d6_1_topfeat_numpy():
 
 def test_d6_2_topfeat_torch():
     global vocab, label_set
-    model_test = torch.load('./test_weights.torch')
+    model_test = torch.load('tests/test_weights.torch')
 
     top_feats_two = features.get_top_features_for_label_torch(model_test, vocab, label_set,'2000s',5)
     eq_(top_feats_two, ['like', 'this', 'im', 'girl', 'up'])

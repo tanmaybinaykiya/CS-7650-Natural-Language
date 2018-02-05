@@ -11,36 +11,56 @@ def setup_module():
     global x_tr, y_tr, x_dv, y_dv, counts_tr, x_dv_pruned, x_tr_pruned
     global labels
     global vocab
-    global X_tr, X_tr_var, X_dv_var, Y_tr, Y_dv, Y_tr_var, Y_dv_var
+    global X_tr, X_tr_var, X_dv_var, Y_tr, Y_dv, Y_tr_var, Y_dv_var, Y_test_var
 
     y_tr, x_tr = preproc.read_data('../lyrics-train.csv', preprocessor=preproc.bag_of_words)
     labels = set(y_tr)
 
     counts_tr = preproc.aggregate_counts(x_tr)
+    x_tr_pruned, vocab = preproc.prune_vocabulary(counts_tr, x_tr, 10)
+    X_tr = preproc.make_numpy(x_tr_pruned, vocab)
+
+    label_set = sorted(list(set(y_tr)))
+    Y_tr = np.array([label_set.index(y_i) for y_i in y_tr])
+
+    X_tr_var = Variable(torch.from_numpy(X_tr.astype(np.float32)))
+    Y_tr_var = Variable(torch.from_numpy(Y_tr))
 
     y_dv, x_dv = preproc.read_data('../lyrics-dev.csv', preprocessor=preproc.bag_of_words)
 
-    x_tr_pruned, vocab = preproc.prune_vocabulary(counts_tr, x_tr, 10)
     x_dv_pruned, _ = preproc.prune_vocabulary(counts_tr, x_dv, 10)
 
     # remove this, so people can run earlier tests
-    X_tr = preproc.make_numpy(x_tr_pruned, vocab)
     X_dv = preproc.make_numpy(x_dv_pruned, vocab)
-    label_set = sorted(list(set(y_tr)))
-    Y_tr = np.array([label_set.index(y_i) for y_i in y_tr])
     Y_dv = np.array([label_set.index(y_i) for y_i in y_dv])
 
-    X_tr_var = Variable(torch.from_numpy(X_tr.astype(np.float32)))
     X_dv_var = Variable(torch.from_numpy(X_dv.astype(np.float32)))
-
-    Y_tr_var = Variable(torch.from_numpy(Y_tr))
     Y_dv_var = Variable(torch.from_numpy(Y_dv))
+
+    # y_test, x_test = preproc.read_data('../lyrics-test-hidden.csv', preprocessor=preproc.bag_of_words)
+    #
+    # x_test_pruned, _ = preproc.prune_vocabulary(counts_tr, x_test, 10)
+    #
+    # # remove this, so people can run earlier tests
+    # X_test = preproc.make_numpy(x_test_pruned, vocab)
+    # Y_test = np.array([label_set.index(y_i) for y_i in y_test])
+    #
+    # X_test_var = Variable(torch.from_numpy(X_test.astype(np.float32)))
+    # Y_test_var = Variable(torch.from_numpy(Y_test))
 
 
 def test_d5_1_numpy():
     global x_dv, counts_tr
 
     x_dv_pruned, vocab = preproc.prune_vocabulary(counts_tr, x_dv, 10)
+
+    #sum x_dv_pruned:
+    total = 0
+    for bag in x_dv_pruned:
+        total += len(list(bag.elements()))
+
+    print("Total: ", total)
+
     X_dv = preproc.make_numpy(x_dv_pruned, vocab)
     eq_(X_dv.sum(), 137687)
     eq_(X_dv.sum(axis=1)[4], 417)
@@ -80,10 +100,11 @@ def test_d5_4_nll_loss():
 
 def test_d5_5_accuracy():
     global Y_dv_var
-    acc = evaluation.acc(np.load('../logreg-es-dev.preds.npy'), Y_dv_var.data.numpy())
+    acc = evaluation.acc(np.load('logreg-es-dev.preds.npy'), Y_dv_var.data.numpy())
     assert_greater_equal(acc, 0.5)
 
 
+# DEV
 def test_d7_3_bakeoff_dev1():
     global Y_dv_var
     acc = evaluation.acc(np.load('bakeoff-dev.preds.npy'), Y_dv_var.data.numpy())
@@ -106,5 +127,29 @@ def test_d7_3_bakeoff_dev4():
     global Y_dv_var
     acc = evaluation.acc(np.load('bakeoff-dev.preds.npy'), Y_dv_var.data.numpy())
     assert_greater_equal(acc, 0.55)
+
+# TEST
+# def test_d7_3_bakeoff_test1():
+#     global Y_dv_var
+#     acc = evaluation.acc(np.load('bakeoff-dev.test.npy'), Y_test_var.data.numpy())
+#     assert_greater_equal(acc, 0.515)
+#
+#
+# def test_d7_3_bakeoff_test2():
+#     global Y_dv_var
+#     acc = evaluation.acc(np.load('bakeoff-dev.test.npy'), Y_test_var.data.numpy())
+#     assert_greater_equal(acc, 0.53)
+#
+#
+# def test_d7_3_bakeoff_test3():
+#     global Y_dv_var
+#     acc = evaluation.acc(np.load('bakeoff-dev.test.npy'), Y_test_var.data.numpy())
+#     assert_greater_equal(acc, 0.54)
+#
+#
+# def test_d7_3_bakeoff_test4():
+#     global Y_dv_var
+#     acc = evaluation.acc(np.load('bakeoff-dev.test.npy'), Y_test_var.data.numpy())
+#     assert_greater_equal(acc, 0.55)
 
 # todo: implement test for bakeoff rubric

@@ -1,10 +1,10 @@
 from collections import defaultdict
-from gtnlplib.clf_base import predict,make_feature_vector
+from gtnlplib.clf_base import predict, make_feature_vector
 
 
 # deliverable 4.1
 def perceptron_update(x, y, weights, labels):
-    '''
+    """
     compute the perceptron update for a single instance
 
     :param x: instance, a counter of base features
@@ -14,7 +14,7 @@ def perceptron_update(x, y, weights, labels):
     :returns: updates to weights, which should be added to weights
     :rtype: defaultdict
 
-    '''
+    """
 
     # update = f(x, y) - f(x, y_real)
     y_predicted, y_score = predict(x, weights, labels)
@@ -36,7 +36,7 @@ def perceptron_update(x, y, weights, labels):
 
 # deliverable 4.2
 def estimate_perceptron(x, y, N_its):
-    '''
+    """
     estimate perceptron weights for N_its iterations over the dataset (x,y)
 
     :param x: instance, a counter of base features and weights
@@ -46,7 +46,7 @@ def estimate_perceptron(x, y, N_its):
     :returns: list of weights dictionaries at each iteration
     :rtype: defaultdict, list
 
-    '''
+    """
 
     labels = set(y)
     weights = defaultdict(float)

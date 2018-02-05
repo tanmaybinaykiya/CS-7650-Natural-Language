@@ -63,7 +63,7 @@ def train_model(loss, model, X_tr_var, Y_tr_var,
                 X_dv_var=None,
                 Y_dv_var=None,
                 status_frequency=10,
-                optim_args={'lr': 0.002,'momentum': 0},
+                optim_args={'lr': 0.002, 'momentum': 0},
                 param_file='best.params'):
 
     # initialize optimizer
@@ -76,7 +76,7 @@ def train_model(loss, model, X_tr_var, Y_tr_var,
         # set gradient to zero
         optimizer.zero_grad()
         # run model forward to produce loss
-        output = loss.forward(model.forward(X_tr_var),Y_tr_var)
+        output = loss.forward(model.forward(X_tr_var), Y_tr_var)
         # backpropagate and train
         output.backward()
         optimizer.step()
@@ -88,13 +88,13 @@ def train_model(loss, model, X_tr_var, Y_tr_var,
             # run forward on dev data
             _, Y_hat = model.forward(X_dv_var).max(dim=1)
             # compute dev accuracy
-            acc = evaluation.acc(Y_hat.data.numpy(),Y_dv_var.data.numpy())
+            acc = evaluation.acc(Y_hat.data.numpy(), Y_dv_var.data.numpy())
             # save
             if len(accuracies) == 0 or acc > max(accuracies):
-                state = {'state_dict':model.state_dict(),
-                         'epoch':len(accuracies)+1,
-                         'accuracy':acc}
-                torch.save(state,param_file)
+                state = {'state_dict': model.state_dict(),
+                         'epoch': len(accuracies)+1,
+                         'accuracy': acc}
+                torch.save(state, param_file)
             accuracies.append(acc)
 
         # print status message if desired

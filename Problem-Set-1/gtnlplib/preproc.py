@@ -76,10 +76,14 @@ def prune_vocabulary(training_counts, target_data, min_counts):
     :rtype: list of Counters, set
     """
 
-    updated_training_counts = Counter(Counter({k: c for k, c in training_counts.items() if c >= min_counts}))
-    new_target_data = list(map(lambda target: target & updated_training_counts, target_data))
-    vocab = set(updated_training_counts.items())
-    return new_target_data, vocab
+    pruned_vocab_keys = set([my_type for my_type in training_counts if training_counts[my_type] >= min_counts])
+    pruned_vocab = set([(key, training_counts[key]) for key in pruned_vocab_keys])
+
+    new_targets = []
+    for target in target_data:
+        new_targets.append(Counter({key:target[key] for key in target if key in pruned_vocab_keys }))
+
+    return new_targets, pruned_vocab
 
 
 # deliverable 5.1
@@ -95,21 +99,20 @@ def make_numpy(bags_of_words, vocab):
     vocab = sorted(vocab)
     V = len(vocab)
     N = len(bags_of_words)
-    print("V:", V, "N:", N)
 
     np_bag_of_words = np.zeros(shape=(N, V))
 
-    for i in range(N):
+    for i, bag in enumerate(bags_of_words):
         for (j, _type) in enumerate(vocab):
-            np_bag_of_words[i, j] = bags_of_words[i][_type[0]]
+            np_bag_of_words[i, j] = bag[_type[0]]
 
     return np_bag_of_words
 
 
 # helper code
-def read_data(filename,label='Era',preprocessor=bag_of_words):
+def read_data(filename, label='Era', preprocessor=bag_of_words):
     df = pd.read_csv(filename)
-    return df[label].values,[preprocessor(string) for string in df['Lyrics'].values]
+    return df[label].values, [preprocessor(string) for string in df['Lyrics'].values]
 
 
 def oov_rate(bow1, bow2):

@@ -46,6 +46,6 @@ def test_d1_4_prune():
     eq_(len(vocab), len(vocab2))
     eq_(len(vocab), 11824)
 
-    eq_(len(x_dv[95].keys())-len(x_dv_pruned[95].keys()), 8)
+    eq_(len(x_dv[95].keys()) - len(x_dv_pruned[95].keys()), 8)
     
 

@@ -12,12 +12,12 @@ def setup_module():
     global labels
     global vocab
 
-    y_tr, x_tr = preproc.read_data('../lyrics-train.csv', preprocessor=preproc.bag_of_words)
+    y_tr, x_tr = preproc.read_data('lyrics-train.csv', preprocessor=preproc.bag_of_words)
     labels = set(y_tr)
 
     counts_tr = preproc.aggregate_counts(x_tr)
 
-    y_dv, x_dv = preproc.read_data('../lyrics-dev.csv', preprocessor=preproc.bag_of_words)
+    y_dv, x_dv = preproc.read_data('lyrics-dev.csv', preprocessor=preproc.bag_of_words)
 
     x_tr_pruned, vocab = preproc.prune_vocabulary(counts_tr, x_tr, 10)
     x_dv_pruned, _ = preproc.prune_vocabulary(counts_tr, x_dv, 10)
@@ -55,5 +55,5 @@ def test_d4_2a_perc_estimate():
 def test_d4_2b_perc_accuracy():
     global y_dv
     # i get 43% accuracy
-    y_hat_dv = evaluation.read_predictions('../perc-dev.preds')
+    y_hat_dv = evaluation.read_predictions('perc-dev.preds')
     assert_greater_equal(evaluation.acc(y_hat_dv, y_dv), .43)

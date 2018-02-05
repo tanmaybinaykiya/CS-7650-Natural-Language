@@ -1,0 +1,894 @@
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/bin/python /Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/gtnlplib/NeuralNet.py
+Initializing... 
+Import complete... 
+Pruning now... 
+Prune complete... 
+Vectorizing... 
+Vectorizing complete...  (4000, 4875) (4000,)
+Fitting 3 folds for each of 72 candidates, totalling 216 fits
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.46741573033707867, total=  25.4s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:   25.5s remaining:    0.0s
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.4913728432108027, total=  25.1s
+[Parallel(n_jobs=1)]: Done   2 out of   2 | elapsed:   50.6s remaining:    0.0s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.4744744744744745, total=  25.5s
+[Parallel(n_jobs=1)]: Done   3 out of   3 | elapsed:  1.3min remaining:    0.0s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.5093632958801498, total=   8.8s
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed:  1.4min remaining:    0.0s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.5063765941485371, total=   5.9s
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:  1.5min remaining:    0.0s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.4984984984984985, total=   8.9s
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed:  1.7min remaining:    0.0s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.49213483146067416, total=   8.6s
+[Parallel(n_jobs=1)]: Done   7 out of   7 | elapsed:  1.8min remaining:    0.0s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.5206301575393848, total=   5.6s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[Parallel(n_jobs=1)]: Done   8 out of   8 | elapsed:  1.9min remaining:    0.0s
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.5022522522522522, total=   5.8s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[Parallel(n_jobs=1)]: Done   9 out of   9 | elapsed:  2.0min remaining:    0.0s
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.4584269662921348, total=  25.0s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.49212303075768943, total=  24.4s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.4774774774774775, total=  22.6s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.4958801498127341, total=   7.4s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.5108777194298575, total=   5.5s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.515015015015015, total=   7.4s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.4966292134831461, total=  41.3s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.5393848462115529, total=   6.4s
+[CV] activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.496996996996997, total=   6.4s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.48164794007490636, total=  24.7s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.5003750937734434, total=  25.3s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.4677177177177177, total=  25.0s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.501123595505618, total=  54.9s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5243810952738185, total=  55.5s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5045045045045045, total=  55.6s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.49063670411985016, total=  17.0s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.5333833458364591, total=  11.6s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.49774774774774777, total=  12.4s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.4749063670411985, total=  25.3s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.4876219054763691, total=  25.1s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.47372372372372373, total=  25.2s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+
+
+
+
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5265917602996255, total=  37.0s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.522880720180045, total=  37.7s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.4954954954954955, total=  26.0s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.4801498127340824, total=  17.4s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.5123780945236309, total=  11.5s
+[CV] activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+
+
+
+[CV]  activation=identity, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.49774774774774777, total=  10.5s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+
+
+
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.4689138576779026, total=  25.1s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.49962490622655664, total=  25.2s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.48123123123123124, total=  25.0s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.501123595505618, total=  55.4s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.5041260315078769, total=  55.4s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.45645645645645644, total=  56.7s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.49737827715355803, total= 1.1min
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.5198799699924981, total= 1.1min
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.4984984984984985, total= 1.7min
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.4689138576779026, total=  24.7s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.4913728432108027, total=  25.4s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.4872372372372372, total=  25.6s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.49812734082397003, total=  48.4s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.4966241560390098, total=  47.7s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.5037537537537538, total=  51.1s
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.4891385767790262, total= 1.2min
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5161290322580645, total= 1.1min
+[CV] activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=identity, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5022522522522522, total= 1.1min
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.503370786516854, total=  13.5s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.4951237809452363, total=  15.2s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.484984984984985, total=  13.9s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.5086142322097378, total=  56.6s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.5176294073518379, total=  56.2s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.49174174174174173, total=  55.5s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.49812734082397003, total=  11.9s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.5303825956489122, total=  11.1s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.5075075075075075, total=   9.8s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.49812734082397003, total=  14.0s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.4943735933983496, total=  15.7s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.47147147147147145, total=  14.2s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.5131086142322098, total=  49.7s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.5348837209302325, total=  35.3s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.49774774774774777, total=  50.4s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.503370786516854, total=  11.4s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.5356339084771192, total=  11.1s
+[CV] activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.5082582582582582, total=   7.6s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.4951310861423221, total=  13.6s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.5003750937734434, total=  16.8s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.47297297297297297, total=  14.3s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5483146067415731, total=  57.0s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+
+
+
+
+
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5566391597899475, total=  58.9s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5367867867867868, total=  54.9s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.48314606741573035, total=  35.5s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.5206301575393848, total=  26.1s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.5112612612612613, total=  30.9s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.50187265917603, total=  13.6s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.5191297824456114, total=  14.6s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.46321321321321324, total=  14.2s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5460674157303371, total=  52.2s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5626406601650412, total=  53.8s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5405405405405406, total=  51.8s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.4846441947565543, total=  30.9s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.5303825956489122, total=  22.3s
+[CV] activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=logistic, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.5, total=  34.6s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.5056179775280899, total=  12.6s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.5086271567891973, total=  15.6s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.4827327327327327, total=  12.5s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.49138576779026216, total=  58.3s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.5236309077269318, total=  59.4s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.5142642642642643, total=  57.5s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.5228464419475656, total= 1.1min
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.5393848462115529, total= 1.1min
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.5195195195195195, total= 1.1min
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.5063670411985018, total=  12.2s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.5063765941485371, total=  14.0s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.47597597597597596, total=  12.5s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.4891385767790262, total=  46.6s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.5288822205551388, total=  46.4s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.5165165165165165, total=  45.9s
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5198501872659176, total= 1.0min
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5416354088522131, total= 1.0min
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+[CV] activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+  % self.max_iter, ConvergenceWarning)
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+[CV]  activation=logistic, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5217717717717718, total= 1.0min
+  % self.max_iter, ConvergenceWarning)
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.4943820224719101, total=  10.5s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.5116279069767442, total=  13.2s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.4804804804804805, total=  10.7s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.5250936329588015, total=  28.1s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.5288822205551388, total=  26.2s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.5105105105105106, total=  26.8s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.5205992509363296, total=  16.0s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.5221305326331583, total=  14.4s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.503003003003003, total=  14.8s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.501123595505618, total=  13.0s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.5003750937734434, total=  15.8s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.4947447447447447, total=  12.6s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.5108614232209738, total=  25.5s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.5326331582895724, total=  17.8s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.512012012012012, total=  26.3s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.5280898876404494, total=  14.6s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.5266316579144786, total=  14.9s
+[CV] activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.5015015015015015, total=  13.9s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.4891385767790262, total=  11.9s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.5153788447111778, total=  14.0s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.503003003003003, total=  10.9s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5415730337078651, total=  50.8s
+  % self.max_iter, ConvergenceWarning)
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5431357839459865, total=  50.9s
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.493993993993994, total=  50.7s
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.5101123595505618, total=  13.2s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.5296324081020255, total=  17.3s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.49324324324324326, total=  15.8s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.501123595505618, total=  14.1s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.5056264066016504, total=  13.6s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.4894894894894895, total=  10.3s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5340823970037453, total=  45.9s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5453863465866466, total=  57.7s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5067567567567568, total=  51.5s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.49737827715355803, total=  21.3s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.536384096024006, total=  18.7s
+[CV] activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.5007507507507507, total=  17.8s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.4936329588014981, total=  14.7s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.5153788447111778, total=  16.0s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.49324324324324326, total=  11.8s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.5220973782771535, total=  55.5s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.5251312828207052, total=  51.2s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.4954954954954955, total=  53.8s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.5123595505617977, total= 1.3min
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.536384096024006, total= 1.2min
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.4984984984984985, total= 1.1min
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.48164794007490636, total=  10.7s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.5123780945236309, total=  14.7s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.4894894894894895, total=  10.1s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.4966292134831461, total=  44.7s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.5123780945236309, total=  44.9s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.503003003003003, total=  45.6s
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5063670411985018, total= 1.0min
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5183795948987246, total= 1.2min
+[CV] activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=tanh, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5015015015015015, total= 1.1min
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.50187265917603, total=  20.4s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.48687171792948236, total=  26.1s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=lbfgs, score=0.49024024024024027, total=  22.4s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.5101123595505618, total=  22.4s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.522880720180045, total=  17.3s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=sgd, score=0.5097597597597597, total=  13.2s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.5183520599250936, total=   6.8s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.5348837209302325, total=   9.7s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=True, solver=adam, score=0.5105105105105106, total=   8.3s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.48314606741573035, total=  19.2s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.5063765941485371, total=  22.6s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=lbfgs, score=0.4872372372372372, total=  22.4s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.5108614232209738, total=  16.7s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.5183795948987246, total=  11.1s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=sgd, score=0.496996996996997, total=  13.7s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.49887640449438203, total=   5.6s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.5078769692423106, total=   7.8s
+[CV] activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.01, nesterovs_momentum=False, solver=adam, score=0.49624624624624625, total=   6.8s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.48389513108614235, total=  22.8s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.5056264066016504, total=  22.4s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=lbfgs, score=0.481981981981982, total=  20.5s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5131086142322098, total=  52.6s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5266316579144786, total=  53.1s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=sgd, score=0.5097597597597597, total=  51.8s
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.5235955056179775, total=  16.0s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.5468867216804201, total=  10.0s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=True, solver=adam, score=0.5052552552552553, total=  10.0s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.4861423220973783, total=  23.6s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.5131282820705176, total=  22.5s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=lbfgs, score=0.4827327327327327, total=  21.8s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5213483146067416, total=  52.6s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5356339084771192, total=  52.3s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=sgd, score=0.5165165165165165, total=  50.0s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.5385767790262173, total=  11.8s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.5356339084771192, total=  11.2s
+[CV] activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.001, nesterovs_momentum=False, solver=adam, score=0.5225225225225225, total=  15.3s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.48764044943820223, total=  25.2s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.522880720180045, total=  24.2s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=lbfgs, score=0.5, total=  23.9s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.4936329588014981, total=  53.1s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.47861965491372843, total=  53.0s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=sgd, score=0.48123123123123124, total=  51.9s
+  % self.max_iter, ConvergenceWarning)
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.5213483146067416, total= 1.0min
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.5386346586646662, total=  58.7s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam 
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=True, solver=adam, score=0.5015015015015015, total=  55.5s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.4771535580524345, total=  18.3s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.4988747186796699, total=  22.8s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs 
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=lbfgs, score=0.4872372372372372, total=  22.2s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.4801498127340824, total=  46.1s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.5101275318829708, total=  47.4s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=sgd, score=0.4924924924924925, total=  52.1s
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5153558052434457, total= 1.2min
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5311327831957989, total= 1.1min
+[CV] activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam 
+  % self.max_iter, ConvergenceWarning)
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+[Parallel(n_jobs=1)]: Done 216 out of 216 | elapsed: 111.9min finished
+[CV]  activation=relu, learning_rate_init=0.0001, nesterovs_momentum=False, solver=adam, score=0.5165165165165165, total= 1.1min
+Acc:  {'mean_fit_time': array([25.3082157 ,  7.87434642,  6.64610275, 23.97795113,  6.74482632,
+/Users/tanmaybinaykiya/Projects/CS-7650-Natural-Language/Problem-Set-1/.env/lib/python3.6/site-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+       18.02064172, 24.99761558, 55.32064088, 13.66985758, 25.17484999,
+  % self.max_iter, ConvergenceWarning)
+       33.55002499, 13.12405904, 25.06335195, 55.80790671, 78.70954426,
+       25.21561639, 49.05528665, 67.77514203, 14.1792086 , 56.10333697,
+       10.93442957, 14.594865  , 45.12969041, 10.02266367, 14.84904257,
+       56.91516805, 30.81948463, 14.10632666, 52.57512546, 29.2177759 ,
+       13.52260907, 58.36031206, 66.44220074, 12.86865958, 46.30766002,
+       61.65104628, 11.47244263, 26.99281875, 15.06765119, 13.78050359,
+       23.19322427, 14.40804386, 12.25894602, 50.77611168, 15.40941898,
+       12.64771605, 51.68354821, 19.23619167, 14.17806204, 53.45753805,
+       70.24364932, 11.78745039, 45.05065958, 68.41879384, 22.95947091,
+       17.60174306,  8.23699466, 21.37010701, 13.81296968,  6.74156777,
+       21.88936337, 52.49723593, 12.00644366, 22.62032604, 51.61879063,
+       12.75047437, 24.41736809, 52.66380429, 58.81185857, 21.05751022,
+       48.49472729, 67.35693041]), 'std_fit_time': array([ 0.16054797,  1.40403611,  1.34979104,  1.04162697,  0.8991204 ,
+       16.44826585,  0.22239674,  0.29147434,  2.37174424,  0.06907416,
+        5.36692138,  3.0397835 ,  0.06845957,  0.60298314, 16.43441496,
+        0.38220774,  1.45128782,  2.74132064,  0.70475849,  0.47742118,
+        0.8699735 ,  0.76579608,  6.94636335,  1.6974141 ,  1.35967367,
+        1.63070204,  3.82125403,  0.4233454 ,  0.88507332,  5.16502695,
+        1.42726943,  0.77439789,  1.70298983,  0.76879035,  0.29007916,
+        0.12385459,  1.21604664,  0.78616722,  0.68062622,  1.4165959 ,
+        3.82080181,  0.40880235,  1.27662631,  0.07472202,  1.7066565 ,
+        1.64947637,  4.83762941,  1.47899329,  1.76999276,  1.77555307,
+        5.36507386,  2.02721814,  0.38030676,  4.73788559,  2.34206286,
+        3.78513384,  1.17859701,  1.52717972,  2.25588148,  0.88688915,
+        1.03566245,  0.51224616,  2.83393537,  0.71405083,  1.15631251,
+        1.79208949,  0.55887586,  0.56513752,  2.73129665,  1.99271995,
+        2.59177167,  4.10194392]), 'mean_score_time': array([0.01837134, 0.02016894, 0.01810924, 0.02126185, 0.01791239,
+       0.02634168, 0.01890826, 0.02015408, 0.01934139, 0.01862144,
+       0.0177803 , 0.01889769, 0.02058816, 0.01941188, 0.01748808,
+       0.02004997, 0.02410293, 0.0191346 , 0.02267241, 0.01987433,
+       0.0197738 , 0.02159031, 0.02569532, 0.021626  , 0.02130747,
+       0.0306534 , 0.02113612, 0.02168727, 0.01985272, 0.02042333,
+       0.019871  , 0.02096669, 0.01890604, 0.02078239, 0.02029697,
+       0.01865824, 0.02001198, 0.02369467, 0.02173535, 0.02722033,
+       0.01974201, 0.02581127, 0.0201323 , 0.01885358, 0.01877435,
+       0.02114463, 0.01976713, 0.01945798, 0.02277374, 0.01868455,
+       0.0203201 , 0.0209643 , 0.01884667, 0.02178073, 0.01835823,
+       0.0180219 , 0.01886129, 0.01855826, 0.01779731, 0.01756255,
+       0.01821295, 0.01817528, 0.01885064, 0.01837126, 0.01964005,
+       0.01991963, 0.01989587, 0.01803414, 0.01828019, 0.01828233,
+       0.01959364, 0.01844398]), 'std_score_time': array([2.92751868e-04, 1.46489630e-03, 1.16422570e-03, 1.35956804e-03,
+       1.69340378e-03, 8.74109423e-03, 1.68469748e-03, 4.33453888e-03,
+       9.62784297e-04, 1.13262388e-03, 4.76276107e-04, 1.02624467e-03,
+       3.31163433e-03, 1.85602326e-04, 6.64824051e-04, 1.81403496e-03,
+       7.40280145e-03, 9.84337590e-04, 1.57366767e-03, 1.06245832e-03,
+       1.83649790e-03, 1.73240718e-03, 1.00929937e-02, 2.31509244e-03,
+       1.98396042e-03, 9.18954829e-03, 2.00692874e-04, 1.41159361e-03,
+       7.76924961e-04, 1.28020924e-03, 1.39665678e-03, 1.69826555e-03,
+       5.39985058e-04, 2.16802401e-03, 2.30131698e-03, 7.85055491e-04,
+       3.92873131e-04, 7.01597794e-03, 2.94707794e-03, 9.35001160e-03,
+       9.91614390e-04, 8.22230723e-03, 5.26452949e-04, 1.39539904e-04,
+       1.36595930e-04, 1.30112589e-03, 1.17201467e-03, 2.84468991e-04,
+       2.25534737e-03, 1.71797126e-04, 1.80288143e-03, 1.04535967e-03,
+       5.79425278e-05, 4.00125432e-03, 3.48034129e-04, 1.10721467e-04,
+       1.91361273e-04, 5.88477363e-04, 3.37400470e-04, 4.40018754e-04,
+       3.16235221e-04, 7.28127513e-04, 5.84320254e-04, 1.73374775e-04,
+       1.88931244e-03, 8.19127478e-04, 9.10060369e-04, 3.26098304e-04,
+       2.09548125e-04, 6.03874439e-04, 7.85392497e-04, 9.78792922e-04]), 'param_activation': masked_array(data=['identity', 'identity', 'identity', 'identity',
+                   'identity', 'identity', 'identity', 'identity',
+                   'identity', 'identity', 'identity', 'identity',
+                   'identity', 'identity', 'identity', 'identity',
+                   'identity', 'identity', 'logistic', 'logistic',
+                   'logistic', 'logistic', 'logistic', 'logistic',
+                   'logistic', 'logistic', 'logistic', 'logistic',
+                   'logistic', 'logistic', 'logistic', 'logistic',
+                   'logistic', 'logistic', 'logistic', 'logistic', 'tanh',
+                   'tanh', 'tanh', 'tanh', 'tanh', 'tanh', 'tanh', 'tanh',
+                   'tanh', 'tanh', 'tanh', 'tanh', 'tanh', 'tanh', 'tanh',
+                   'tanh', 'tanh', 'tanh', 'relu', 'relu', 'relu', 'relu',
+                   'relu', 'relu', 'relu', 'relu', 'relu', 'relu', 'relu',
+                   'relu', 'relu', 'relu', 'relu', 'relu', 'relu', 'relu'],
+             mask=[False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False],
+       fill_value='?',
+            dtype=object), 'param_learning_rate_init': masked_array(data=[0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.001, 0.001,
+                   0.001, 0.001, 0.001, 0.001, 0.0001, 0.0001, 0.0001,
+                   0.0001, 0.0001, 0.0001, 0.01, 0.01, 0.01, 0.01, 0.01,
+                   0.01, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.0001,
+                   0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.01, 0.01,
+                   0.01, 0.01, 0.01, 0.01, 0.001, 0.001, 0.001, 0.001,
+                   0.001, 0.001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001,
+                   0.0001, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.001,
+                   0.001, 0.001, 0.001, 0.001, 0.001, 0.0001, 0.0001,
+                   0.0001, 0.0001, 0.0001, 0.0001],
+             mask=[False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False],
+       fill_value='?',
+            dtype=object), 'param_nesterovs_momentum': masked_array(data=[True, True, True, False, False, False, True, True,
+                   True, False, False, False, True, True, True, False,
+                   False, False, True, True, True, False, False, False,
+                   True, True, True, False, False, False, True, True,
+                   True, False, False, False, True, True, True, False,
+                   False, False, True, True, True, False, False, False,
+                   True, True, True, False, False, False, True, True,
+                   True, False, False, False, True, True, True, False,
+                   False, False, True, True, True, False, False, False],
+             mask=[False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False],
+       fill_value='?',
+            dtype=object), 'param_solver': masked_array(data=['lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam',
+                   'lbfgs', 'sgd', 'adam', 'lbfgs', 'sgd', 'adam'],
+             mask=[False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False],
+       fill_value='?',
+            dtype=object), 'params': [{'activation': 'identity', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'identity', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'identity', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'identity', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'identity', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'identity', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'identity', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'identity', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'identity', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'identity', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'identity', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'identity', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'identity', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'identity', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'identity', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'identity', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'identity', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'identity', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'logistic', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'logistic', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'logistic', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'logistic', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'logistic', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'logistic', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'logistic', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'logistic', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'logistic', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'logistic', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'logistic', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'logistic', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'logistic', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'logistic', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'logistic', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'logistic', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'logistic', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'logistic', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'tanh', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'tanh', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'tanh', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'tanh', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'tanh', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'tanh', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'tanh', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'tanh', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'tanh', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'tanh', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'tanh', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'tanh', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'tanh', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'tanh', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'tanh', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'tanh', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'tanh', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'tanh', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'relu', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'relu', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'relu', 'learning_rate_init': 0.01, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'relu', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'relu', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'relu', 'learning_rate_init': 0.01, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'relu', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'relu', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'relu', 'learning_rate_init': 0.001, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'relu', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'relu', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'relu', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'adam'}, {'activation': 'relu', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'lbfgs'}, {'activation': 'relu', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'sgd'}, {'activation': 'relu', 'learning_rate_init': 0.0001, 'nesterovs_momentum': True, 'solver': 'adam'}, {'activation': 'relu', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'lbfgs'}, {'activation': 'relu', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'sgd'}, {'activation': 'relu', 'learning_rate_init': 0.0001, 'nesterovs_momentum': False, 'solver': 'adam'}], 'split0_test_score': array([0.46741573, 0.5093633 , 0.49213483, 0.45842697, 0.49588015,
+       0.49662921, 0.48164794, 0.5011236 , 0.4906367 , 0.47490637,
+       0.52659176, 0.48014981, 0.46891386, 0.5011236 , 0.49737828,
+       0.46891386, 0.49812734, 0.48913858, 0.50337079, 0.50861423,
+       0.49812734, 0.49812734, 0.51310861, 0.50337079, 0.49513109,
+       0.54831461, 0.48314607, 0.50187266, 0.54606742, 0.48464419,
+       0.50561798, 0.49138577, 0.52284644, 0.50636704, 0.48913858,
+       0.51985019, 0.49438202, 0.52509363, 0.52059925, 0.5011236 ,
+       0.51086142, 0.52808989, 0.48913858, 0.54157303, 0.51011236,
+       0.5011236 , 0.5340824 , 0.49737828, 0.49363296, 0.52209738,
+       0.51235955, 0.48164794, 0.49662921, 0.50636704, 0.50187266,
+       0.51011236, 0.51835206, 0.48314607, 0.51086142, 0.4988764 ,
+       0.48389513, 0.51310861, 0.52359551, 0.48614232, 0.52134831,
+       0.53857678, 0.48764045, 0.49363296, 0.52134831, 0.47715356,
+       0.48014981, 0.51535581]), 'split1_test_score': array([0.49137284, 0.50637659, 0.52063016, 0.49212303, 0.51087772,
+       0.53938485, 0.50037509, 0.5243811 , 0.53338335, 0.48762191,
+       0.52288072, 0.51237809, 0.49962491, 0.50412603, 0.51987997,
+       0.49137284, 0.49662416, 0.51612903, 0.49512378, 0.51762941,
+       0.5303826 , 0.49437359, 0.53488372, 0.53563391, 0.50037509,
+       0.55663916, 0.52063016, 0.51912978, 0.56264066, 0.5303826 ,
+       0.50862716, 0.52363091, 0.53938485, 0.50637659, 0.52888222,
+       0.54163541, 0.51162791, 0.52888222, 0.52213053, 0.50037509,
+       0.53263316, 0.52663166, 0.51537884, 0.54313578, 0.52963241,
+       0.50562641, 0.54538635, 0.5363841 , 0.51537884, 0.52513128,
+       0.5363841 , 0.51237809, 0.51237809, 0.51837959, 0.48687172,
+       0.52288072, 0.53488372, 0.50637659, 0.51837959, 0.50787697,
+       0.50562641, 0.52663166, 0.54688672, 0.51312828, 0.53563391,
+       0.53563391, 0.52288072, 0.47861965, 0.53863466, 0.49887472,
+       0.51012753, 0.53113278]), 'split2_test_score': array([0.47447447, 0.4984985 , 0.50225225, 0.47747748, 0.51501502,
+       0.496997  , 0.46771772, 0.5045045 , 0.49774775, 0.47372372,
+       0.4954955 , 0.49774775, 0.48123123, 0.45645646, 0.4984985 ,
+       0.48723724, 0.50375375, 0.50225225, 0.48498498, 0.49174174,
+       0.50750751, 0.47147147, 0.49774775, 0.50825826, 0.47297297,
+       0.53678679, 0.51126126, 0.46321321, 0.54054054, 0.5       ,
+       0.48273273, 0.51426426, 0.51951952, 0.47597598, 0.51651652,
+       0.52177177, 0.48048048, 0.51051051, 0.503003  , 0.49474474,
+       0.51201201, 0.5015015 , 0.503003  , 0.49399399, 0.49324324,
+       0.48948949, 0.50675676, 0.50075075, 0.49324324, 0.4954955 ,
+       0.4984985 , 0.48948949, 0.503003  , 0.5015015 , 0.49024024,
+       0.50975976, 0.51051051, 0.48723724, 0.496997  , 0.49624625,
+       0.48198198, 0.50975976, 0.50525526, 0.48273273, 0.51651652,
+       0.52252252, 0.5       , 0.48123123, 0.5015015 , 0.48723724,
+       0.49249249, 0.51651652]), 'mean_test_score': array([0.47775, 0.50475, 0.505  , 0.476  , 0.50725, 0.511  , 0.48325,
+       0.51   , 0.50725, 0.47875, 0.515  , 0.49675, 0.48325, 0.48725,
+       0.50525, 0.4825 , 0.4995 , 0.5025 , 0.4945 , 0.506  , 0.512  ,
+       0.488  , 0.51525, 0.51575, 0.4895 , 0.54725, 0.505  , 0.49475,
+       0.54975, 0.505  , 0.499  , 0.50975, 0.52725, 0.49625, 0.5115 ,
+       0.52775, 0.4955 , 0.5215 , 0.51525, 0.49875, 0.5185 , 0.51875,
+       0.5025 , 0.52625, 0.511  , 0.49875, 0.52875, 0.5115 , 0.50075,
+       0.51425, 0.51575, 0.4945 , 0.504  , 0.50875, 0.493  , 0.51425,
+       0.52125, 0.49225, 0.50875, 0.501  , 0.4905 , 0.5165 , 0.52525,
+       0.494  , 0.5245 , 0.53225, 0.5035 , 0.4845 , 0.5205 , 0.48775,
+       0.49425, 0.521  ]), 'std_test_score': array([0.01005293, 0.00458245, 0.01179693, 0.01379934, 0.00822248,
+       0.02006792, 0.0133763 , 0.01026034, 0.01870232, 0.00629077,
+       0.01386449, 0.0131793 , 0.01262172, 0.02179251, 0.01035312,
+       0.00976287, 0.00306764, 0.01102295, 0.00751938, 0.01072608,
+       0.01354854, 0.01177883, 0.01523155, 0.01419833, 0.01187233,
+       0.00813713, 0.01593316, 0.02337089, 0.00938856, 0.01900848,
+       0.01155957, 0.01354814, 0.00868589, 0.01432515, 0.01661189,
+       0.00984793, 0.01273651, 0.00791753, 0.008676  , 0.00284648,
+       0.01000281, 0.01220192, 0.01072111, 0.02280027, 0.01486445,
+       0.0067967 , 0.01621098, 0.01764621, 0.01034344, 0.01330928,
+       0.015647  , 0.01303851, 0.00646953, 0.00709177, 0.00642852,
+       0.00610339, 0.01015647, 0.01012585, 0.00885371, 0.00497901,
+       0.01072247, 0.00729214, 0.01703097, 0.01359466, 0.00811482,
+       0.00697747, 0.01460132, 0.00655131, 0.0151667 , 0.00887724,
+       0.01230423, 0.00717927]), 'rank_test_score': array([71, 40, 37, 72, 33, 27, 67, 29, 33, 70, 21, 51, 67, 65, 36, 69, 47,
+       43, 55, 35, 24, 63, 20, 17, 62,  2, 37, 54,  1, 37, 48, 30,  6, 52,
+       25,  5, 53, 10, 19, 49, 15, 14, 43,  7, 27, 49,  4, 25, 46, 22, 17,
+       55, 41, 31, 59, 22, 11, 60, 31, 45, 61, 16,  8, 58,  9,  3, 42, 66,
+       13, 64, 57, 12], dtype=int32), 'split0_train_score': array([0.99136961, 0.8934334 , 0.99136961, 0.99136961, 0.83227017,
+       0.99136961, 0.99136961, 0.9782364 , 0.99136961, 0.99136961,
+       0.94934334, 0.99136961, 0.99136961, 0.7684803 , 0.99061914,
+       0.99136961, 0.76247655, 0.99099437, 0.99136961, 0.98874296,
+       0.99136961, 0.99136961, 0.98949343, 0.99136961, 0.99136961,
+       0.77223265, 0.99136961, 0.99136961, 0.76923077, 0.99136961,
+       0.99136961, 0.53058161, 0.98686679, 0.99136961, 0.52645403,
+       0.98649156, 0.99136961, 0.99136961, 0.99099437, 0.99136961,
+       0.99136961, 0.99136961, 0.99136961, 0.98536585, 0.99136961,
+       0.99136961, 0.98649156, 0.99136961, 0.99136961, 0.76097561,
+       0.99136961, 0.99136961, 0.73846154, 0.99136961, 0.99136961,
+       0.99061914, 0.99099437, 0.99136961, 0.99061914, 0.99061914,
+       0.99136961, 0.98686679, 0.99136961, 0.99136961, 0.98724203,
+       0.99136961, 0.99136961, 0.77523452, 0.99061914, 0.99136961,
+       0.77335835, 0.99061914]), 'split1_train_score': array([0.99287589, 0.79377578, 0.99287589, 0.99287589, 0.86164229,
+       0.99287589, 0.99287589, 0.97750281, 0.99287589, 0.99287589,
+       0.96325459, 0.99287589, 0.99287589, 0.76602925, 0.99287589,
+       0.99287589, 0.75928009, 0.99287589, 0.99287589, 0.99175103,
+       0.99287589, 0.99287589, 0.98837645, 0.99287589, 0.99287589,
+       0.76865392, 0.99287589, 0.99287589, 0.76565429, 0.99287589,
+       0.99287589, 0.52943382, 0.99025122, 0.99287589, 0.53018373,
+       0.98950131, 0.99287589, 0.99287589, 0.99287589, 0.99287589,
+       0.99287589, 0.99287589, 0.99287589, 0.98650169, 0.99287589,
+       0.99287589, 0.98650169, 0.99287589, 0.99287589, 0.7480315 ,
+       0.99287589, 0.99287589, 0.75815523, 0.99287589, 0.99287589,
+       0.99175103, 0.99287589, 0.99287589, 0.99175103, 0.99212598,
+       0.99287589, 0.99025122, 0.99287589, 0.99287589, 0.99062617,
+       0.99287589, 0.99287589, 0.74915636, 0.99287589, 0.99287589,
+       0.78252718, 0.99212598]), 'split2_train_score': array([0.99287856, 0.85194903, 0.99287856, 0.99287856, 0.9107946 ,
+       0.99250375, 0.99287856, 0.97788606, 0.99287856, 0.99287856,
+       0.94077961, 0.99250375, 0.99287856, 0.75224888, 0.99287856,
+       0.99287856, 0.76649175, 0.99250375, 0.99287856, 0.99062969,
+       0.99250375, 0.99287856, 0.99062969, 0.99250375, 0.99287856,
+       0.76086957, 0.99287856, 0.99287856, 0.76311844, 0.99287856,
+       0.99287856, 0.53223388, 0.988006  , 0.99287856, 0.53035982,
+       0.98838081, 0.99287856, 0.99287856, 0.99287856, 0.99287856,
+       0.99287856, 0.99250375, 0.99287856, 0.98650675, 0.99287856,
+       0.99287856, 0.98763118, 0.99287856, 0.99287856, 0.75524738,
+       0.99287856, 0.99287856, 0.75674663, 0.99287856, 0.99287856,
+       0.99062969, 0.99250375, 0.99287856, 0.99062969, 0.99287856,
+       0.99287856, 0.98875562, 0.99287856, 0.99287856, 0.98988006,
+       0.99287856, 0.99287856, 0.76724138, 0.99287856, 0.99287856,
+       0.77286357, 0.99137931]), 'mean_train_score': array([0.99237469, 0.84638607, 0.99237469, 0.99237469, 0.86823569,
+       0.99224975, 0.99237469, 0.97787509, 0.99237469, 0.99237469,
+       0.95112585, 0.99224975, 0.99237469, 0.76225281, 0.99212453,
+       0.99237469, 0.76274946, 0.99212467, 0.99237469, 0.99037456,
+       0.99224975, 0.99237469, 0.98949986, 0.99224975, 0.99237469,
+       0.76725204, 0.99237469, 0.99237469, 0.76600117, 0.99237469,
+       0.99237469, 0.53074977, 0.98837467, 0.99237469, 0.52899919,
+       0.98812456, 0.99237469, 0.99237469, 0.99224961, 0.99237469,
+       0.99237469, 0.99224975, 0.99237469, 0.98612476, 0.99237469,
+       0.99237469, 0.98687481, 0.99237469, 0.99237469, 0.75475149,
+       0.99237469, 0.99237469, 0.75112113, 0.99237469, 0.99237469,
+       0.99099995, 0.99212467, 0.99237469, 0.99099995, 0.99187456,
+       0.99237469, 0.98862454, 0.99237469, 0.99237469, 0.98924942,
+       0.99237469, 0.99237469, 0.76387742, 0.99212453, 0.99237469,
+       0.7762497 , 0.99137481]), 'std_train_score': array([0.0007107 , 0.04087477, 0.0007107 , 0.0007107 , 0.03239471,
+       0.00064063, 0.0007107 , 0.00029959, 0.0007107 , 0.0007107 ,
+       0.00926154, 0.00064063, 0.0007107 , 0.00714427, 0.00106447,
+       0.0007107 , 0.00295047, 0.00081355, 0.0007107 , 0.00124122,
+       0.00064063, 0.0007107 , 0.00091989, 0.00064063, 0.0007107 ,
+       0.00474369, 0.0007107 , 0.0007107 , 0.00250737, 0.0007107 ,
+       0.0007107 , 0.00114929, 0.00140606, 0.0007107 , 0.00180114,
+       0.00124202, 0.0007107 , 0.0007107 , 0.00088759, 0.0007107 ,
+       0.0007107 , 0.00064063, 0.0007107 , 0.00053663, 0.0007107 ,
+       0.0007107 , 0.00053485, 0.0007107 , 0.0007107 , 0.00529603,
+       0.0007107 , 0.0007107 , 0.00897014, 0.0007107 , 0.0007107 ,
+       0.00053111, 0.00081355, 0.0007107 , 0.00053111, 0.00093938,
+       0.0007107 , 0.00138479, 0.0007107 , 0.0007107 , 0.00145176,
+       0.0007107 , 0.0007107 , 0.01090886, 0.00106447, 0.0007107 ,
+       0.00444344, 0.00061518])} {'activation': 'logistic', 'learning_rate_init': 0.001, 'nesterovs_momentum': False, 'solver': 'sgd'} 0.54975
+
+Process finished with exit code 0

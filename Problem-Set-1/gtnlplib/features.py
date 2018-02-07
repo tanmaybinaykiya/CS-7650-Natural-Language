@@ -113,7 +113,7 @@ def concat_ttr_binned_features(data):
     new_feature = np.digitize(ttr, bins, right=False)
     new_feature = (np.arange(K) == new_feature[:, np.newaxis]) + 0
 
-    print("dim new_feature:", new_feature.shape)
-    print("dim data:", data.shape)
+    # print("dim new_feature:", new_feature.shape)
+    # print("dim data:", data.shape)
 
     return np.concatenate((data, new_feature), axis=1)

@@ -8,8 +8,8 @@ import nose
 def setup_module():
     global x_tr, y_tr, x_dv, y_dv, counts_tr, counts_dv, counts_bl, x_dv_pruned, x_tr_pruned
     global vocab
-    y_tr, x_tr = preproc.read_data('lyrics-train.csv', preprocessor=preproc.bag_of_words)
-    y_dv, x_dv = preproc.read_data('lyrics-dev.csv', preprocessor=preproc.bag_of_words)
+    y_tr, x_tr = preproc.read_data('../lyrics-train.csv', preprocessor=preproc.bag_of_words)
+    y_dv, x_dv = preproc.read_data('../lyrics-dev.csv', preprocessor=preproc.bag_of_words)
     counts_tr = preproc.aggregate_counts(x_tr)
     counts_dv = preproc.aggregate_counts(x_dv)
 

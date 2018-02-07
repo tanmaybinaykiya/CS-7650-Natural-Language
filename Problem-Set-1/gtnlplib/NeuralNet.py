@@ -251,13 +251,13 @@ class Net(nn.Module):
 # implements all these methods. Using it is very simple:
 
 
-def run_optimizer(x, y, num_its=200, param_file='best.params'):
+def run_optimizer(x, y, num_its=1500):
     this_net = Net()
 
     import torch.optim as optim
 
     # create your optimizer
-    optimizer = optim.SGD(this_net.parameters(), lr=0.01)
+    optimizer = optim.SGD(this_net.parameters(), lr=0.001, momentum=1)
     criterion = nn.MSELoss()
 
     # in your training loop:
@@ -358,7 +358,7 @@ def runz(X_training_torch, Y_training_torch):
 
 runz()
 
-# from sklearn.neural_network import MLPClassifier
+from sklearn.neural_network import MLPClassifier
 # from sklearn.model_selection import GridSearchCV
 #
 # def scikit_nn():

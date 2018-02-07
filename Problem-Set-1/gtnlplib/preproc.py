@@ -100,7 +100,7 @@ def make_numpy(bags_of_words, vocab):
     V = len(vocab)
     N = len(bags_of_words)
 
-    np_bag_of_words = np.zeros(shape=(N, V))
+    np_bag_of_words = np.zeros(shape=(N, V), dtype=float)
 
     for i, bag in enumerate(bags_of_words):
         for (j, _type) in enumerate(vocab):
@@ -108,6 +108,10 @@ def make_numpy(bags_of_words, vocab):
 
     return np_bag_of_words
 
+
+def make_vocab_numpy(vocab):
+    vocab = sorted(vocab)
+    return np.array([count for _, count in vocab], dtype=float)
 
 # helper code
 def read_data(filename, label='Era', preprocessor=bag_of_words):

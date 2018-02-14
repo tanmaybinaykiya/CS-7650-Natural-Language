@@ -29,7 +29,7 @@ def get_all_tags(input_file):
     return all_tags
 
 
-def conll_seq_generator(input_file,max_insts=1000000):
+def conll_seq_generator(input_file, max_insts=1000000):
     """
     Create a generator of (words, tags) pairs over the conll input file
     
@@ -69,6 +69,6 @@ def conll_seq_generator(input_file,max_insts=1000000):
 
         if len(cur_words)>0:
             num_insts += 1
-            yield cur_words,cur_tags
+            yield cur_words, cur_tags
     
 

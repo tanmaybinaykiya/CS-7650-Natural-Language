@@ -3,7 +3,8 @@ from collections import defaultdict, Counter
 from gtnlplib.preproc import conll_seq_generator
 from gtnlplib.constants import OFFSET, START_TAG, END_TAG, UNK
 
-argmax = lambda x : max(x.items(),key=operator.itemgetter(1))[0]
+argmax = lambda x : max(x.items(), key=operator.itemgetter(1))[0]
+
 
 def get_tag_word_counts(trainfile):
     """
@@ -14,15 +15,14 @@ def get_tag_word_counts(trainfile):
     :returns: -- a default dict of counters, where the keys are tags.
     """
     all_counters = defaultdict(lambda: Counter())
-    
-    raise NotImplementedError
-    
-     
-    
+    for words, tags in conll_seq_generator(trainfile):
+        for tag, word in zip(tags, words):
+            all_counters[tag].update([word])
     return all_counters
 
-#'''
-#keep
+
+# '''
+# keep
 def get_tag_to_ix(input_file):
     """
     creates a dictionary that maps each tag (including the START_TAG and END_TAG to a unique index and vice-versa
@@ -36,18 +36,19 @@ def get_tag_to_ix(input_file):
             if tag not in tag_to_ix:
                 tag_to_ix[tag] = len(tag_to_ix)
     
-    #adding START_TAG and END_TAG
-    #if START_TAG not in tag_to_ix:
+    # adding START_TAG and END_TAG
+    # if START_TAG not in tag_to_ix:
     #    tag_to_ix[START_TAG] = len(tag_to_ix)
-    #if END_TAG not in tag_to_ix:
+    # if END_TAG not in tag_to_ix:
     #    tag_to_ix[END_TAG] = len(tag_to_ix)
     
     ix_to_tag = {v:k for k,v in tag_to_ix.items()}
     
     return tag_to_ix, ix_to_tag
-#'''
+# '''
+# keep
 
-#keep 
+
 def get_word_to_ix(input_file, max_size=100000):
     """
     creates a vocab that has the list of most frequent occuring words such that the size of the vocab <=max_size, 
@@ -78,6 +79,7 @@ def get_noun_weights():
     weights = defaultdict(float)
     weights[('NOUN'),OFFSET] = 1.
     return weights
+
 
 def get_most_common_word_weights(trainfile):
     """

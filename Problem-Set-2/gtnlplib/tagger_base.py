@@ -17,6 +17,8 @@ def make_classifier_tagger(weights):
     :rtype: function
 
     """
+
+    # print("weights:", weights)
     # collect all tags and words
     tag_set = set()
     word_set = set()
@@ -27,10 +29,12 @@ def make_classifier_tagger(weights):
     unique_tags_list = list(tag_set)
     unique_words_list = list(word_set)
 
-    best_tag = defaultdict(lambda: 'NOUN')
+    most_f_tag = argmax({u_tag: weights[(u_tag, OFFSET)] for u_tag in unique_tags_list})
+
+    best_tag = defaultdict(lambda: most_f_tag)
     for u_word in unique_words_list:
         some_var = {(tag, u_word): weights[(tag, u_word)] for tag in unique_tags_list}
-        some_var.update({(tag, OFFSET): weights[(tag, OFFSET)] for tag in unique_tags_list})
+        some_var.update({(tag, OFFSET): 1 for tag in unique_tags_list})
         best_tag[u_word] = argmax(some_var)[0]
 
     def classify(words, all_tags):

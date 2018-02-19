@@ -103,6 +103,7 @@ def get_most_common_word_weights(trainfile):
         this_counter = all_counters[word]
         tag, count = this_counter.most_common(1)[0]
         weights[(tag, word)] = count
+        weights[(tag, OFFSET)] += count
 
     return weights
 

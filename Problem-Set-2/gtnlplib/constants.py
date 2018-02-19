@@ -1,8 +1,8 @@
 # If you change the location of dataset, then
 # Make the appropriate changes to the following constants.
 
-# prepend_path = ''
-prepend_path = '../'
+prepend_path = ''
+# prepend_path = '../'
 
 TRAIN_FILE = prepend_path + 'data/en-ud-train.conllu'
 DEV_FILE = prepend_path + 'data/en-ud-dev.conllu'

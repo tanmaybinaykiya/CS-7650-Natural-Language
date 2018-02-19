@@ -2,7 +2,8 @@ from gtnlplib.constants import OFFSET
 from gtnlplib import clf_base, evaluation, preproc
 
 import numpy as np
-from collections import defaultdict
+from collections import defaultdict, Counter
+
 
 def get_nb_weights(trainfile, smoothing):
     """
@@ -27,18 +28,23 @@ def get_nb_weights(trainfile, smoothing):
     return nb_weights
 
 
-def get_corpus_counts(x,y,label):
-    """
-    Compute corpus counts of words for all documents with a given label.
-
-    :param x: list of counts, one per instance
+def get_corpus_counts(x, y, label):
+    """Compute corpus counts of words for all documents with a given label.
+    :param x: list of Counters, one per instance
     :param y: list of labels, one per instance
     :param label: desired label for corpus counts
-    :returns: defaultdict of corpus counts
+    :returns: corpus counts
     :rtype: defaultdict
-
     """
-    raise NotImplementedError
+
+    final = Counter()
+
+    for (index, yi) in enumerate(y):
+        if label == yi:
+            final = x[index] + final
+
+    return defaultdict(float, final)
+
 
     
 
@@ -57,9 +63,24 @@ def estimate_pxy(x,y,label,smoothing,vocab):
 
     '''
 
-    raise NotImplementedError
+    V = len(vocab)
 
-    
+    all_docs_with_label = [x[i] for i in range(len(y)) if y[i] == label]
+
+    count_aggregator_for_label = Counter()
+
+    for doc in all_docs_with_label:
+        count_aggregator_for_label.update(doc)
+
+    no_of_words_in_docs_with_label = len(list(count_aggregator_for_label.elements()))
+
+    log_phi = defaultdict(float)
+
+    denom = np.log(no_of_words_in_docs_with_label + (V * smoothing))
+    for (word, _) in vocab:
+        log_phi[(label, word)] = np.log(count_aggregator_for_label[word] + smoothing) - denom
+
+    return log_phi
 
 
 def estimate_nb(x,y,smoothing):
@@ -73,10 +94,32 @@ def estimate_nb(x,y,smoothing):
     :rtype: defaultdict 
 
     """
+    label_counter = Counter()
+    label_counter.update(y)
 
-    raise NotImplementedError
+    vocab_counter = Counter()
 
-    
+    for xi in x:
+        vocab_counter.update(xi)
+
+    vocab = set(vocab_counter.items())
+
+    unique_labels = set(y)
+
+    V = len(vocab)                           # vocab_size
+    K = len(unique_labels)                   #
+
+    # Need theta = [theta_1; theta_2; theta_3; ..., theta_i, ..., theta_K]
+    # theta_i = [log_phi_i_1, log_phi_i_2, log_phi_i_3, ..., log_phi_i_i, ..., log_phi_i_V, 1].T
+
+    theta = defaultdict(float)
+
+    for label in unique_labels:
+        theta.update(estimate_pxy(x, y, label, smoothing, vocab))
+        mu = label_counter[label]/len(y)
+        theta.update({(label, OFFSET): np.log(mu) })
+
+    return theta
 
 
 def find_best_smoother(x_tr,y_tr,x_dv,y_dv,smoothers):
@@ -93,12 +136,19 @@ def find_best_smoother(x_tr,y_tr,x_dv,y_dv,smoothers):
 
     '''
 
-    raise NotImplementedError
-    
+    labels = list(set(y_tr))
 
+    best_acc = 0
+    best_smoother = None
+    scores = {}
 
+    for smoother in smoothers:
+        theta_i = estimate_nb(x_tr, y_tr, smoother)
+        y_hat = clf_base.predict_all(x_dv, theta_i, labels)
+        acc = evaluation.acc(y_hat, y_dv)
+        scores[smoother] = acc
+        if acc > best_acc:
+            best_acc = acc
+            best_smoother = smoother
 
-
-
-
-
+    return best_smoother, scores

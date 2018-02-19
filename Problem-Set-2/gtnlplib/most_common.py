@@ -93,12 +93,19 @@ def get_most_common_word_weights(trainfile):
 
     """
     weights = defaultdict(float)
-    
-    raise NotImplementedError
-    
-    
-            
+    all_counters = defaultdict(lambda: Counter())
+
+    for words, tags in conll_seq_generator(trainfile):
+        for tag, word in zip(tags, words):
+            all_counters[word].update([tag])
+
+    for word in all_counters:
+        this_counter = all_counters[word]
+        tag, count = this_counter.most_common(1)[0]
+        weights[(tag, word)] = count
+
     return weights
+
 
 def get_tag_trans_counts(trainfile):
     """compute a dict of counters for tag transitions

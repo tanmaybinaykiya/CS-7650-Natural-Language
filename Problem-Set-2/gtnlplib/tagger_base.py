@@ -4,6 +4,7 @@ from gtnlplib import clf_base
 from gtnlplib import bilstm
 from gtnlplib.constants import DEV_FILE, OFFSET, TRAIN_FILE, UNK
 import operator
+from collections import Counter, defaultdict
 
 argmax = lambda x: max(x.items(), key=lambda y: y[1])[0]
 
@@ -16,8 +17,21 @@ def make_classifier_tagger(weights):
     :rtype: function
 
     """
-    # print("weights: ", weights)
-    # raise NotImplementedError
+    # collect all tags and words
+    tag_set = set()
+    word_set = set()
+    for (u_tag, u_word) in weights:
+        tag_set.add(u_tag)
+        word_set.add(u_word)
+
+    unique_tags_list = list(tag_set)
+    unique_words_list = list(word_set)
+
+    best_tag = defaultdict(lambda: 'NOUN')
+    for u_word in unique_words_list:
+        some_var = {(tag, u_word): weights[(tag, u_word)] for tag in unique_tags_list}
+        some_var.update({(tag, OFFSET): weights[(tag, OFFSET)] for tag in unique_tags_list})
+        best_tag[u_word] = argmax(some_var)[0]
 
     def classify(words, all_tags):
         """This nested function should return a list of tags, computed using a classifier with the weights passed as arguments to make_classifier_tagger and using basefeatures for each token (just the token and the offset)
@@ -28,14 +42,9 @@ def make_classifier_tagger(weights):
         :rtype: list
 
         """
-        # print("weights: ", weights)
         assigned_tags = []
         for word in words:
-            some_var = {(tag, word): weights[(tag, word)] for tag in all_tags}
-            some_var.update({(tag, OFFSET): weights[(tag, OFFSET)] for tag in all_tags})
-            best_tag = argmax(some_var)[0]
-            assigned_tags.append(best_tag)
-        # print("Assigned tags: ", assigned_tags)
+            assigned_tags.append(best_tag[word])
         return assigned_tags
 
     return classify
@@ -74,7 +83,7 @@ def eval_tagger(tagger, outfilename, all_tags=None, trainfile=TRAIN_FILE, testfi
     testfile -- (optional) Filename containing true labels
 
     Returns:
-    confusion_matrix -- dict of occurences of (true_label, pred_label)
+    confusion_matrix -- dict of occurrences of (true_label, pred_label)
     """
     apply_tagger(tagger, outfilename, all_tags, trainfile, testfile)
     return scorer.get_confusion(testfile, outfilename)  # run the scorer on the prediction file

@@ -18,13 +18,12 @@ def get_nb_weights(trainfile, smoothing):
     
     :returns: nb_weights: naive bayes weights
     """
-    token_level_docs=[]
-    token_level_tags=[]
-    for words,tags in preproc.conll_seq_generator(trainfile):
-        token_level_docs += [{word:1} for word in words]
-        token_level_tags +=tags
+    token_level_docs = []
+    token_level_tags = []
+    for words, tags in preproc.conll_seq_generator(trainfile):
+        token_level_docs += [{word: 1} for word in words]
+        token_level_tags += tags
     nb_weights = estimate_nb(token_level_docs, token_level_tags, smoothing)
-    
     return nb_weights
 
 
@@ -46,10 +45,7 @@ def get_corpus_counts(x, y, label):
     return defaultdict(float, final)
 
 
-    
-
-
-def estimate_pxy(x,y,label,smoothing,vocab):
+def estimate_pxy(x, y, label, smoothing, vocab):
     '''
     Compute smoothed log-probability P(word | label) for a given label.
 
@@ -117,7 +113,7 @@ def estimate_nb(x,y,smoothing):
     for label in unique_labels:
         theta.update(estimate_pxy(x, y, label, smoothing, vocab))
         mu = label_counter[label]/len(y)
-        theta.update({(label, OFFSET): np.log(mu) })
+        theta.update({(label, OFFSET): np.log(mu)})
 
     return theta
 

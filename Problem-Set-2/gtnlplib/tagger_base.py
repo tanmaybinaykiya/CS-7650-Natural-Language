@@ -16,26 +16,31 @@ def make_classifier_tagger(weights):
     :returns: a function that takes a list of words, and a list of candidate tags, and returns tags for all words
     :rtype: function
 
+    Weights: defaultdict(<class 'float'>, {('NOUN', '**OFFSET**'): 1.0})
+    weight: ('NOUN', '**OFFSET**')
+
     """
 
-    # print("weights:", weights)
-    # collect all tags and words
     tag_set = set()
-    word_set = set()
-    for (u_tag, u_word) in weights:
-        tag_set.add(u_tag)
-        word_set.add(u_word)
+    vocab_set = set()
 
-    unique_tags_list = list(tag_set)
-    unique_words_list = list(word_set)
+    for weight in weights:
+        tag_set.add(weight[0])
+        vocab_set.add(weight[1])
 
-    most_f_tag = argmax({u_tag: weights[(u_tag, OFFSET)] for u_tag in unique_tags_list})
+    tag_list = list(tag_set)
+    vocab_list = list(vocab_set)
 
-    best_tag = defaultdict(lambda: most_f_tag)
-    for u_word in unique_words_list:
-        some_var = {(tag, u_word): weights[(tag, u_word)] for tag in unique_tags_list}
-        some_var.update({(tag, OFFSET): 1 for tag in unique_tags_list})
-        best_tag[u_word] = argmax(some_var)[0]
+    del tag_set
+    del vocab_set
+    del weight
+
+    most_frequent_tag = argmax({tag: weights[(tag, OFFSET)] for tag in tag_list})
+
+    classifier_map = defaultdict(lambda : most_frequent_tag)
+
+    for word in vocab_list:
+        classifier_map[word] = argmax({tag: weights[(tag, word)] for tag in tag_list})
 
     def classify(words, all_tags):
         """This nested function should return a list of tags, computed using a classifier with the weights passed as arguments to make_classifier_tagger and using basefeatures for each token (just the token and the offset)
@@ -46,10 +51,7 @@ def make_classifier_tagger(weights):
         :rtype: list
 
         """
-        assigned_tags = []
-        for word in words:
-            assigned_tags.append(best_tag[word])
-        return assigned_tags
+        return [classifier_map[word] for word in words]
 
     return classify
 

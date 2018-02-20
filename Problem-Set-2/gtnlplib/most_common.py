@@ -93,17 +93,21 @@ def get_most_common_word_weights(trainfile):
 
     """
     weights = defaultdict(float)
-    all_counters = defaultdict(lambda: Counter())
+
+    word_counters = defaultdict(lambda: Counter())
+    tag_counters = defaultdict(lambda: Counter())
 
     for words, tags in conll_seq_generator(trainfile):
         for tag, word in zip(tags, words):
-            all_counters[word].update([tag])
+            word_counters[word].update([tag])
+            tag_counters[tag].update([word])
 
-    for word in all_counters:
-        this_counter = all_counters[word]
-        tag, count = this_counter.most_common(1)[0]
-        weights[(tag, word)] = count
-        weights[(tag, OFFSET)] += count
+    for word in word_counters:
+        for tag in word_counters[word]:
+            weights[(tag, word)] = word_counters[word][tag]
+
+    for tag in tag_counters:
+        weights[(tag, OFFSET)] = len(list(tag_counters[tag].elements()))
 
     return weights
 

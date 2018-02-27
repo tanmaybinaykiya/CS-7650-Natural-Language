@@ -5,16 +5,16 @@ Fill in the rest of the table below:
 |      | they | can | can | fish | END |
 |------|------|-----|-----|------|-----|
 | Start|  n/a | n/a | n/a | n/a  | n/a |
-| Noun | -2   |     |     |      | n/a |
-| Verb | -13  |     |     |      | n/a |
+| Noun | -2   | -10 | -10 | -15  | n/a |
+| Verb | -13  | -6  | -11 | -16  | n/a |
 | End  | n/a  | n/a | n/a | n/a  | -17 |
 
 
 # 4.2 (0.5 points)
 
-Do you think the predicted tags "PRON AUX AUX NOUN PUNCT" for the sentence "They can can fish ." are correct? Use your understanding of parts-of-speech from the notes.
+Do you think the predicted tags "PRON AUX AUX NOUN PUNCT" for the sentence "They can can fish ." are correct? Use your understanding of parts-of-speech from the notes.  
 
-
+It should be "PRON AUX VERB NOUN PUNCT" 
 
 # 8 (7650 only; 1 point)
 

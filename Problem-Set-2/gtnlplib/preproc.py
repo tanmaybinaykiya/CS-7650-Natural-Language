@@ -1,6 +1,8 @@
 import codecs
 from gtnlplib.constants import UNK
-#from gtnlplib.bilstm import prepare_sequence
+
+
+# from gtnlplib.bilstm import prepare_sequence
 
 def load_data(input_file):
     """
@@ -8,11 +10,12 @@ def load_data(input_file):
     """
     X = []
     Y = []
-    for i,(words,tags) in enumerate(conll_seq_generator(input_file)):
+    for i, (words, tags) in enumerate(conll_seq_generator(input_file)):
         X.append(words)
         Y.append(tags)
-    
-    return X,Y
+
+    return X, Y
+
 
 def get_all_tags(input_file):
     """
@@ -40,7 +43,7 @@ def conll_seq_generator(input_file, max_insts=1000000):
                  default value: 1000000 : is sufficient for our dataset
     returns -- generator of (words, tags) pairs
     """
-    
+
     cur_words = []
     cur_tags = []
     num_insts = 0
@@ -52,23 +55,21 @@ def conll_seq_generator(input_file, max_insts=1000000):
             if len(line.rstrip()) == 0:
                 if len(cur_words) > 0:
                     num_insts += 1
-                    yield cur_words,cur_tags
+                    yield cur_words, cur_tags
                     cur_words = []
                     cur_tags = []
             elif not line.startswith("# "):
                 parts = line.rstrip().split()
                 cur_words.append(parts[1])
-                if len(parts)>3:
+                if len(parts) > 3:
                     cur_tags.append(parts[3])
-                else: 
+                else:
                     cur_tags.append(UNK)
-        
-        #checking at the end of file
+
+        # checking at the end of file
         if num_insts >= max_insts:
             return
 
-        if len(cur_words)>0:
+        if len(cur_words) > 0:
             num_insts += 1
             yield cur_words, cur_tags
-    
-

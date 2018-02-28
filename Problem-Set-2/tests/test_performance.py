@@ -2,6 +2,7 @@ from nose.tools import with_setup, ok_, eq_, assert_almost_equal, nottest, asser
 import torch
 from gtnlplib.constants import * 
 import numpy as np
+from gtnlplib import scorer
 
 #7.1a
 def test_model_en_dev_accuracy1():

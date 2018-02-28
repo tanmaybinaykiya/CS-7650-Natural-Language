@@ -1,0 +1,14 @@
+hmm-dev-en.preds 83.853960
+hmm-dev-nr.preds 86.26
+
+bilstm-dev-en.preds 86.66 -> kaggle
+bilstm-dev-nr.preds 88.84 -> kaggle
+
+bilstm_crf-dev-en.preds 84.47  -> kaggle
+bilstm_crf-dev-nr.preds 88.86  -> kaggle
+
+
+
+
+
+

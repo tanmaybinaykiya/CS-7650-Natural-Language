@@ -220,7 +220,11 @@ class FFCombiner(nn.Module):
         # 2. The second linear layer
         # The output of the first linear layer should be embedding_dim
         # (the rest of the input/output dims are thus determined)
-        raise NotImplementedError
+
+        self.hidden = nn.Linear(2 * embedding_dim, embedding_dim)
+        self.nl_hidden = nn.Tanh()
+        self.final_layer = nn.Linear(embedding_dim, embedding_dim)
+
         # END STUDENT
 
     def forward(self, head_embed, modifier_embed):
@@ -233,7 +237,7 @@ class FFCombiner(nn.Module):
         :return The embedding of the combination as a row vector of shape (1, embedding_dim)
         """
         # STUDENT
-        raise NotImplementedError
+        return self.final_layer(self.nl_hidden(self.hidden(torch.cat([head_embed, modifier_embed], 1))))
         # END STUDENT
 
 
@@ -334,7 +338,10 @@ class FFActionChooser(nn.Module):
         # Construct in this order:
         # 1. The first linear layer (the one that is called first in the forward pass)
         # 2. The second linear layer
-        raise NotImplementedError
+        self.hidden = nn.Linear(input_dim, input_dim)
+        self.nl_hidden = nn.ReLU()
+        self.final_layer = nn.Linear(input_dim, 3)
+        self.soft_max = nn.LogSoftmax(dim=1)
         # END STUDENT
 
     def forward(self, inputs):
@@ -346,7 +353,7 @@ class FFActionChooser(nn.Module):
             (it is a row vector, with an entry for each action)
         """
         # STUDENT
-        raise NotImplementedError
+        return self.soft_max(self.final_layer(self.nl_hidden(self.hidden(torch.cat(inputs, 1)))))
         # END STUDENT
 
 

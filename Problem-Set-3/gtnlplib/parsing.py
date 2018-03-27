@@ -142,7 +142,7 @@ class ParserState:
         """
         # STUDENT
 
-        if len(self.stack) == 0:
+        if self.stack_len() == 0:
             return Actions.SHIFT
         elif self.input_buffer_len() <= 2:
             return Actions.ARC_R

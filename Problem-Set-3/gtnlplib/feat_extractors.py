@@ -12,5 +12,8 @@ class SimpleFeatureExtractor:
         """
         # STUDENT
         # hint: parser_state.stack_peek_n
-        raise NotImplementedError
+        stack_top = parser_state.stack_peek_n(1)[0]
+        buffer_top, buffer_next = parser_state.input_buffer_peek_n(2)
+        # print(stack_top, buffer_top, buffer_next)
+        return [stack_top.embedding, buffer_top.embedding, buffer_next.embedding]
         # END STUDENT

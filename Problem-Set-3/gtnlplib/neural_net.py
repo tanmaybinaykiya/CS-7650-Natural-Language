@@ -9,6 +9,7 @@ import gtnlplib.utils as utils
 if HAVE_CUDA:
     import torch.cuda as cuda
 
+
 # ===-----------------------------------------------------------------------------===
 # WORD EMBEDDING COMPONENTS
 # ===-----------------------------------------------------------------------------===
@@ -48,9 +49,8 @@ class VanillaWordEmbedding(nn.Module):
 
         # STUDENT
         # name your embedding member "word_embeddings"
-        raise NotImplementedError
+        self.word_embeddings = nn.Embedding(len(self.word_to_ix), embedding_dim)
         # END STUDENT
-
 
     def forward(self, sentence):
         """
@@ -60,8 +60,14 @@ class VanillaWordEmbedding(nn.Module):
             NOTE: the Variables returned should be row vectors, that
                 is, of shape (1, embedding_dim)
         """
-        embeds = [] # store each Variable in here
+        embeds = []  # store each Variable in here
         # STUDENT
+        for word in sentence:
+            word_index = self.word_to_ix[word]
+            index_tensor = ag.Variable(torch.LongTensor([word_index]))
+            embeddin = self.word_embeddings(index_tensor)
+            embeds.append(embeddin)
+
         # END STUDENT
         return embeds
 
@@ -131,14 +137,15 @@ class BiLSTMWordEmbedding(nn.Module):
         to the LSTM.  You shouldn't need to call this function explicitly
         """
         if self.use_cuda:
-            return (ag.Variable(cuda.FloatTensor(self.num_layers * 2, 1, self.hidden_dim//2).zero_()),
-                    ag.Variable(cuda.FloatTensor(self.num_layers * 2, 1, self.hidden_dim//2).zero_()))
+            return (ag.Variable(cuda.FloatTensor(self.num_layers * 2, 1, self.hidden_dim // 2).zero_()),
+                    ag.Variable(cuda.FloatTensor(self.num_layers * 2, 1, self.hidden_dim // 2).zero_()))
         else:
-            return (ag.Variable(torch.zeros(self.num_layers * 2, 1, self.hidden_dim//2)),
-                    ag.Variable(torch.zeros(self.num_layers * 2, 1, self.hidden_dim//2)))
+            return (ag.Variable(torch.zeros(self.num_layers * 2, 1, self.hidden_dim // 2)),
+                    ag.Variable(torch.zeros(self.num_layers * 2, 1, self.hidden_dim // 2)))
 
     def clear_hidden_state(self):
         self.hidden = self.init_hidden()
+
 
 class SuffixAndWordEmbedding(nn.Module):
     """
@@ -166,7 +173,6 @@ class SuffixAndWordEmbedding(nn.Module):
         raise NotImplementedError
         # END STUDENT
 
-
     def forward(self, sentence):
         """
         Compute word embeddings by concatenating the word and suffix embeddings together
@@ -175,7 +181,7 @@ class SuffixAndWordEmbedding(nn.Module):
         :return A list of autograd.Variables, where list[i] is the embedding of word i in the sentence.
         NOTE: the Variables returned should be row vectors, that is, of shape (1, embedding_dim)
         """
-        embeds = [] # store each Variable in here
+        embeds = []  # store each Variable in here
         # STUDENT
         # END STUDENT
         return embeds
@@ -263,7 +269,6 @@ class LSTMCombiner(nn.Module):
 
         self.hidden = self.init_hidden()
 
-
     def forward(self, head_embed, modifier_embed):
         """
         Do the next LSTM step, and return the hidden state as the new
@@ -296,7 +301,6 @@ class LSTMCombiner(nn.Module):
         else:
             return (ag.Variable(torch.FloatTensor(self.num_layers, 1, self.embedding_dim).zero_()),
                     ag.Variable(torch.FloatTensor(self.num_layers, 1, self.embedding_dim).zero_()))
-
 
     def clear_hidden_state(self):
         self.hidden = self.init_hidden()
@@ -345,6 +349,7 @@ class FFActionChooser(nn.Module):
         raise NotImplementedError
         # END STUDENT
 
+
 class LSTMActionChooser(nn.Module):
     """
     This network piece takes features from the current
@@ -375,7 +380,7 @@ class LSTMActionChooser(nn.Module):
         raise NotImplementedError
         # END STUDENT
         self.hidden = self.init_hidden()
-    
+
     def forward(self, inputs):
         """
         combine all the features into one big row vector, then compute log probabilities
@@ -402,6 +407,3 @@ class LSTMActionChooser(nn.Module):
 
     def clear_hidden_state(self):
         self.hidden = self.init_hidden()
-
-
-

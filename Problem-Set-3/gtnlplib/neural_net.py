@@ -9,7 +9,6 @@ import gtnlplib.utils as utils
 if HAVE_CUDA:
     import torch.cuda as cuda
 
-
 # ===-----------------------------------------------------------------------------===
 # WORD EMBEDDING COMPONENTS
 # ===-----------------------------------------------------------------------------===
@@ -237,7 +236,17 @@ class FFCombiner(nn.Module):
         :return The embedding of the combination as a row vector of shape (1, embedding_dim)
         """
         # STUDENT
-        return self.final_layer(self.nl_hidden(self.hidden(torch.cat([head_embed, modifier_embed], 1))))
+
+        h_embed = head_embed
+        m_embed = modifier_embed
+
+        # if isinstance(head_embed, StackEntry):
+        #     h_embed = head_embed.embedding
+        #
+        # if isinstance(modifier_embed, StackEntry):
+        #     m_embed = modifier_embed.embedding
+
+        return self.final_layer(self.nl_hidden(self.hidden(torch.cat([h_embed, m_embed], dim=1))))
         # END STUDENT
 
 
@@ -340,7 +349,7 @@ class FFActionChooser(nn.Module):
         # 2. The second linear layer
         self.hidden = nn.Linear(input_dim, input_dim)
         self.nl_hidden = nn.ReLU()
-        self.final_layer = nn.Linear(input_dim, 3)
+        self.final_layer = nn.Linear(input_dim, Actions.NUM_ACTIONS)
         self.soft_max = nn.LogSoftmax(dim=1)
         # END STUDENT
 

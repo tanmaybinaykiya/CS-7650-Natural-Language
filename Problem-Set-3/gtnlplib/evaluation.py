@@ -2,22 +2,23 @@ from gtnlplib.parsing import ParserState, DepGraphEdge
 from gtnlplib.utils import DummyCombiner
 from gtnlplib.constants import Actions, ROOT_TOK
 
+
 def dependency_graph_from_oracle(sentence, actions):
     """
     Take a sentence and a sequence of actions
     and return a set of dependency edges for further evaluation
     """
-    stack = ParserState(sentence, [None]*len(sentence), DummyCombiner())
+    stack = ParserState(sentence, [None] * len(sentence), DummyCombiner())
     dependency_graph = set()
-    
-    for act in [ Actions.action_to_ix[a] for a in actions ]:
+
+    for act in [Actions.action_to_ix[a] for a in actions]:
         if act == Actions.SHIFT:
             stack.shift()
         elif act == Actions.ARC_L:
             dependency_graph.add(stack.arc_left())
         elif act == Actions.ARC_R:
             dependency_graph.add(stack.arc_right())
-    
+
     return dependency_graph
 
 
@@ -68,7 +69,8 @@ def compute_metric(parser, data, metric):
             try:
                 predicted = parser.predict(sentence)
             except:
-                import pdb; pdb.set_trace()
+                import pdb;
+                pdb.set_trace()
             val += metric(predicted, gold)
     return val / len(data)
 

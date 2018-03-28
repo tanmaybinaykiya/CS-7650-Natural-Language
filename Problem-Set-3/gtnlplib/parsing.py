@@ -64,7 +64,9 @@ class ParserState:
         <END-OF-INPUT> should not be shifted onto the stack ever.
         """
         # STUDENT
-        return self.input_buffer[0].headword == END_OF_INPUT_TOK
+        value = self.input_buffer[0].headword == END_OF_INPUT_TOK
+        # print("value:", value, self.input_buffer[0].headword)
+        return value
         # END STUDENT
 
     def stack_len(self):
@@ -121,9 +123,8 @@ class ParserState:
         :return a new DepGraphEdge object for the arc from modifier to head
         """
         # STUDENT
-
-        combined_embedding = self.combiner(head, modifier)
-        self.input_buffer.insert(0, combined_embedding)
+        combined_embedding = self.combiner(head.embedding, modifier.embedding)
+        self.input_buffer.insert(0, StackEntry(embedding=combined_embedding, headword=head.headword, headword_pos=head.headword_pos))
         return DepGraphEdge((head.headword, head.headword_pos), (modifier.headword, modifier.headword_pos))
         # END STUDENT
 
@@ -249,7 +250,25 @@ class TransitionParser(nn.Module):
 
         while not parser_state.done_parsing():
             # STUDENT
-            pass
+            action_log_probs = self.action_chooser(self.feature_extractor.get_features(parser_state))
+            outputs.append(action_log_probs)
+
+            if have_gold_actions:
+                best_action = action_queue.popleft()
+            else:
+                best_action = utils.argmax(action_log_probs)
+
+            if best_action == Actions.SHIFT:
+                parser_state.shift()
+            elif best_action == Actions.ARC_R:
+                dep_graph.add(parser_state.arc_right())
+            elif best_action == Actions.ARC_L:
+                edge = parser_state.arc_left()
+                dep_graph.add(edge)
+
+            # print("best_action: ", best_action)
+
+            actions_done.append(best_action)
             # END STUDENT
         return outputs, dep_graph, actions_done
 

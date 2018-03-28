@@ -1,17 +1,15 @@
-from nose.tools import with_setup, eq_, assert_almost_equals, ok_
-from gtnlplib.parsing import ParserState, TransitionParser, DepGraphEdge, train
-from gtnlplib.utils import DummyCombiner, DummyActionChooser, DummyWordEmbedding, DummyFeatureExtractor, \
-    initialize_with_pretrained, build_suff_to_ix
-from gtnlplib.data_tools import Dataset
-from gtnlplib.constants import *
-from gtnlplib.evaluation import compute_metric, fscore, dependency_graph_from_oracle
-from gtnlplib.feat_extractors import SimpleFeatureExtractor
-from gtnlplib.neural_net import FFActionChooser, FFCombiner, VanillaWordEmbedding, BiLSTMWordEmbedding, LSTMCombiner, \
-    LSTMActionChooser, SuffixAndWordEmbedding
-
 import torch
 import torch.autograd as ag
 import torch.optim as optim
+from nose.tools import eq_, assert_almost_equals
+
+from gtnlplib.constants import *
+from gtnlplib.evaluation import dependency_graph_from_oracle
+from gtnlplib.feat_extractors import SimpleFeatureExtractor
+from gtnlplib.neural_net import FFActionChooser, FFCombiner, VanillaWordEmbedding, BiLSTMWordEmbedding, LSTMCombiner, \
+    LSTMActionChooser, SuffixAndWordEmbedding
+from gtnlplib.parsing import ParserState, TransitionParser, train
+from gtnlplib.utils import DummyCombiner, initialize_with_pretrained, build_suff_to_ix
 
 EMBEDDING_DIM = 64
 TEST_EMBEDDING_DIM = 4
@@ -21,7 +19,7 @@ NUM_FEATURES = 3
 
 def make_dummy_parser_state(sentence):
     dummy_embeds = [w + "-EMBEDDING" for w in sentence] + [END_OF_INPUT_TOK + "-EMBEDDING"]
-    return ParserState(sentence + [END_OF_INPUT_TOK], dummy_embeds, DummyCombiner())
+    return ParserState(sentence + [END_OF_INPUT_TOK], dummy_embeds, DummyCombiner())  # FFCombiner(embedding_dim=5))
 
 
 def make_list(var_list):
@@ -88,6 +86,8 @@ def test_create_arc_d1_1b():
     state = make_dummy_parser_state(test_sent)
     state.shift()
     left_arc = state.arc_left()
+
+    print("left_arc: ", left_arc)
 
     # head word should be "man"
     eq_(left_arc[0][0], "man")
@@ -317,7 +317,7 @@ def test_predict_after_train_d3_1():
 
     # Train
     for i in range(75):
-        train([(test_sent[:-1], gold)], parser, optim.SGD(parser.parameters(), lr=0.01), verbose=False)
+        train([(test_sent[:-1], gold)], parser, optim.SGD(parser.parameters(), lr=0.01), verbose=True)
 
     # predict
     pred = parser.predict(test_sent[:-1])

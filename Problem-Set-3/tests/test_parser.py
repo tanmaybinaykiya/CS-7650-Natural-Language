@@ -322,6 +322,10 @@ def test_predict_after_train_d3_1():
     # predict
     pred = parser.predict(test_sent[:-1])
     gold_graph = dependency_graph_from_oracle(test_sent[:-1], gold)
+
+    print("Pred: ", pred)
+    print("gold_graph: ", gold_graph)
+
     assert pred == gold_graph
 
 
@@ -333,6 +337,8 @@ def test_dev_d3_2_english():
     total = 0
     for p, g in zip(preds, gold):
         if p.strip() == "":
+            if g.strip() != "":
+                print(g)
             assert g.strip() == "", "Mismatched blank lines. Check your parser's behavior when gold actions are not provided."
             continue
         p_data = p.split("\t")

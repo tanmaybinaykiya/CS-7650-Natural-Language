@@ -240,12 +240,6 @@ class FFCombiner(nn.Module):
         h_embed = head_embed
         m_embed = modifier_embed
 
-        # if isinstance(head_embed, StackEntry):
-        #     h_embed = head_embed.embedding
-        #
-        # if isinstance(modifier_embed, StackEntry):
-        #     m_embed = modifier_embed.embedding
-
         return self.final_layer(self.nl_hidden(self.hidden(torch.cat([h_embed, m_embed], dim=1))))
         # END STUDENT
 

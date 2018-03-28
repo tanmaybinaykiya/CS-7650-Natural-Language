@@ -124,7 +124,8 @@ class ParserState:
         """
         # STUDENT
         combined_embedding = self.combiner(head.embedding, modifier.embedding)
-        self.input_buffer.insert(0, StackEntry(embedding=combined_embedding, headword=head.headword, headword_pos=head.headword_pos))
+        self.input_buffer.insert(0, StackEntry(embedding=combined_embedding, headword=head.headword,
+                                               headword_pos=head.headword_pos))
         return DepGraphEdge((head.headword, head.headword_pos), (modifier.headword, modifier.headword_pos))
         # END STUDENT
 
@@ -132,7 +133,7 @@ class ParserState:
         """
         Ensure that the given action is legal with the current parser state
         There are three main cases to consider:
-        - Don't shift when less than two items are on the input buffer
+        - Don't shift when less than two items are on the input buffer UNLESS the stack is empty.
             - Do arc-right instead
         - Don't do an arc- operation when the stack is empty
             - Do shift instead
@@ -143,14 +144,16 @@ class ParserState:
         """
         # STUDENT
 
-        if self.stack_len() == 0:
-            return Actions.SHIFT
-        elif self.input_buffer_len() <= 2:
+        if action_to_do == Actions.SHIFT and self.input_buffer_len() <= 2 and not self.stack_len() == 0:
             return Actions.ARC_R
-        elif self.stack[0].headword == ROOT_TOK:
-            return Actions.ARC_R if self.input_buffer_len() <= 2 else Actions.SHIFT
-        else:
-            return action_to_do
+
+        if self.stack_len() == 0 and (action_to_do == Actions.ARC_L or action_to_do == Actions.ARC_R):
+            return Actions.SHIFT
+
+        if action_to_do == Actions.ARC_L and self.stack[-1].headword == ROOT_TOK:
+            return Actions.ARC_R if self.input_buffer_len() <= 2 and not self.stack_len() == 0 else Actions.SHIFT
+
+        return action_to_do
 
         # END STUDENT
 
@@ -257,14 +260,16 @@ class TransitionParser(nn.Module):
                 best_action = action_queue.popleft()
             else:
                 best_action = utils.argmax(action_log_probs)
+                best_action = parser_state._validate_action(best_action)
 
             if best_action == Actions.SHIFT:
                 parser_state.shift()
+            elif best_action == Actions.ARC_L:
+                dep_graph.add(parser_state.arc_left())
             elif best_action == Actions.ARC_R:
                 dep_graph.add(parser_state.arc_right())
-            elif best_action == Actions.ARC_L:
-                edge = parser_state.arc_left()
-                dep_graph.add(edge)
+            else:
+                print("ELSE: ", best_action)
 
             # print("best_action: ", best_action)
 

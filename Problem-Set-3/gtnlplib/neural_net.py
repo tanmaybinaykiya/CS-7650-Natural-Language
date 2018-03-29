@@ -6,8 +6,11 @@ import torch.nn.functional as F
 from gtnlplib.constants import Actions, HAVE_CUDA
 import gtnlplib.utils as utils
 
+from gtnlplib.utils import get_suffix
+
 if HAVE_CUDA:
     import torch.cuda as cuda
+
 
 # ===-----------------------------------------------------------------------------===
 # WORD EMBEDDING COMPONENTS
@@ -104,7 +107,10 @@ class BiLSTMWordEmbedding(nn.Module):
         # Note we want the output dim to be hidden_dim, but since our LSTM
         # is bidirectional, we need to make the output of each direction hidden_dim/2
         # name your embedding member "word_embeddings"
-        raise NotImplementedError
+
+        self.word_embeddings = nn.Embedding(num_embeddings=len(word_to_ix), embedding_dim=word_embedding_dim)
+        self.lstm = nn.LSTM(input_size=word_embedding_dim, hidden_size=hidden_dim // 2, num_layers=1,
+                            bidirectional=True, dropout=dropout)
         # END STUDENT
 
         self.hidden = self.init_hidden()
@@ -127,7 +133,24 @@ class BiLSTMWordEmbedding(nn.Module):
         assert self.word_to_ix is not None, "ERROR: Make sure to set word_to_ix on \
                 the embedding lookup components"
         # STUDENT
-        raise NotImplementedError
+
+        embeds = []
+
+        for word in sentence:
+            word_index = self.word_to_ix[word]
+            index_tensor = ag.Variable(torch.LongTensor([word_index]))
+            embedding = self.word_embeddings(index_tensor)
+            embeds.append(embedding)
+
+        embeds = torch.cat(embeds, dim=0)
+
+        output, self.hidden = self.lstm.forward(embeds.view(len(sentence), 1, -1), self.hidden)
+
+        outp = []
+        for emb in output:
+            outp.append(emb)
+
+        return outp
         # END STUDENT
 
     def init_hidden(self):
@@ -166,10 +189,13 @@ class SuffixAndWordEmbedding(nn.Module):
 
         self.output_dim = embedding_dim
 
-        # STUDENT create your embeddings here. 
+        # STUDENT create your embeddings here.
         # Note that embedding_dim should be the final (i.e. concatenated) word embedding size
         # suffix and word embeddings should be the same size
-        raise NotImplementedError
+
+        self.word_embeddings = nn.Embedding(len(self.word_to_ix), embedding_dim//2)
+        self.suffix_embeddings = nn.Embedding(len(self.suff_to_ix), embedding_dim//2)
+
         # END STUDENT
 
     def forward(self, sentence):
@@ -182,6 +208,17 @@ class SuffixAndWordEmbedding(nn.Module):
         """
         embeds = []  # store each Variable in here
         # STUDENT
+        for word in sentence:
+            word_index = self.word_to_ix[word]
+            suffix_index = self.suff_to_ix[get_suffix(word)]
+
+            word_index_tensor = ag.Variable(torch.LongTensor([word_index]))
+            suffix_index_tensor = ag.Variable(torch.LongTensor([suffix_index]))
+
+            word_embedding = self.word_embeddings(word_index_tensor)
+            suffix_embedding = self.word_embeddings(suffix_index_tensor)
+            embeds.append(torch.cat((word_embedding, suffix_embedding), 1))
+
         # END STUDENT
         return embeds
 

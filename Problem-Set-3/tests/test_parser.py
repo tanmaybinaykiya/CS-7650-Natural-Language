@@ -413,7 +413,7 @@ def test_suff_word_embeds_d4_2():
     assert len(embeds) == len(test_sent)
     assert isinstance(embeds, list)
     assert isinstance(embeds[0], ag.Variable)
-    assert embeds[0].size() == (1, TEST_EMBEDDING_DIM)
+    assert embeds[0].size() == (1, TEST_EMBEDDING_DIM), "ERROR: Expected {} Got {}".format((1, TEST_EMBEDDING_DIM), embeds[0].size())
 
     embeds_list = make_list(embeds)
     true = ([-0.45190597, -0.16613023, 1.37900829, 2.5285573],

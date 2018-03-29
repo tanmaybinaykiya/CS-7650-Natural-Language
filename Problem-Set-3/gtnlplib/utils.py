@@ -7,6 +7,7 @@ import numpy as np
 if HAVE_CUDA:
     import torch.cuda as cuda
 
+
 def to_scalar(var):
     """
     Wrap up the terse, obnoxious code to go from torch.Tensor to
@@ -41,6 +42,11 @@ def initialize_with_pretrained(pretrained_embeds, word_embedding):
     raise NotImplementedError
     # END STUDENT
 
+
+def get_suffix(word):
+    return word[-2:] if len(word) >= 2 else word
+
+
 def build_suff_to_ix(word_to_ix):
     """
         From a word to index vocab lookup, create a suffix-to-index vocab lookup
@@ -51,7 +57,10 @@ def build_suff_to_ix(word_to_ix):
     """
     suffset = set()
     # STUDENT
-    raise NotImplementedError
+
+    for word in word_to_ix:
+        suffset.add(get_suffix(word))
+
     # END STUDENT
     suff_to_ix = {c: i for i, c in enumerate(sorted(suffset))}
     return suff_to_ix
@@ -85,7 +94,7 @@ class DummyWordEmbedding:
 
     def __call__(self, sentence):
         self.counter += 1
-        return [None]*len(sentence)
+        return [None] * len(sentence)
 
 
 class DummyFeatureExtractor:
@@ -96,5 +105,3 @@ class DummyFeatureExtractor:
     def get_features(self, parser_state):
         self.counter += 1
         return []
-
-

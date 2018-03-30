@@ -1,15 +1,17 @@
-import torch
-import torch.autograd as ag
-import torch.optim as optim
-from nose.tools import eq_, assert_almost_equals
-
+from nose.tools import with_setup, eq_, assert_almost_equals, ok_
+from gtnlplib.parsing import ParserState, TransitionParser, DepGraphEdge, train
+from gtnlplib.utils import DummyCombiner, DummyActionChooser, DummyWordEmbedding, DummyFeatureExtractor, \
+    initialize_with_pretrained, build_suff_to_ix
+from gtnlplib.data_tools import Dataset
 from gtnlplib.constants import *
-from gtnlplib.evaluation import dependency_graph_from_oracle
+from gtnlplib.evaluation import compute_metric, fscore, dependency_graph_from_oracle
 from gtnlplib.feat_extractors import SimpleFeatureExtractor
 from gtnlplib.neural_net import FFActionChooser, FFCombiner, VanillaWordEmbedding, BiLSTMWordEmbedding, LSTMCombiner, \
     LSTMActionChooser, SuffixAndWordEmbedding
-from gtnlplib.parsing import ParserState, TransitionParser, train
-from gtnlplib.utils import DummyCombiner, initialize_with_pretrained, build_suff_to_ix
+
+import torch
+import torch.autograd as ag
+import torch.optim as optim
 
 EMBEDDING_DIM = 64
 TEST_EMBEDDING_DIM = 4
@@ -19,7 +21,7 @@ NUM_FEATURES = 3
 
 def make_dummy_parser_state(sentence):
     dummy_embeds = [w + "-EMBEDDING" for w in sentence] + [END_OF_INPUT_TOK + "-EMBEDDING"]
-    return ParserState(sentence + [END_OF_INPUT_TOK], dummy_embeds, DummyCombiner())  # FFCombiner(embedding_dim=5))
+    return ParserState(sentence + [END_OF_INPUT_TOK], dummy_embeds, DummyCombiner())
 
 
 def make_list(var_list):
@@ -86,8 +88,6 @@ def test_create_arc_d1_1b():
     state = make_dummy_parser_state(test_sent)
     state.shift()
     left_arc = state.arc_left()
-
-    print("left_arc: ", left_arc)
 
     # head word should be "man"
     eq_(left_arc[0][0], "man")
@@ -317,15 +317,11 @@ def test_predict_after_train_d3_1():
 
     # Train
     for i in range(75):
-        train([(test_sent[:-1], gold)], parser, optim.SGD(parser.parameters(), lr=0.01), verbose=True)
+        train([(test_sent[:-1], gold)], parser, optim.SGD(parser.parameters(), lr=0.01), verbose=False)
 
     # predict
     pred = parser.predict(test_sent[:-1])
     gold_graph = dependency_graph_from_oracle(test_sent[:-1], gold)
-
-    print("Pred: ", pred)
-    print("gold_graph: ", gold_graph)
-
     assert pred == gold_graph
 
 
@@ -337,8 +333,6 @@ def test_dev_d3_2_english():
     total = 0
     for p, g in zip(preds, gold):
         if p.strip() == "":
-            if g.strip() != "":
-                print(g)
             assert g.strip() == "", "Mismatched blank lines. Check your parser's behavior when gold actions are not provided."
             continue
         p_data = p.split("\t")
@@ -413,7 +407,7 @@ def test_suff_word_embeds_d4_2():
     assert len(embeds) == len(test_sent)
     assert isinstance(embeds, list)
     assert isinstance(embeds[0], ag.Variable)
-    assert embeds[0].size() == (1, TEST_EMBEDDING_DIM), "ERROR: Expected {} Got {}".format((1, TEST_EMBEDDING_DIM), embeds[0].size())
+    assert embeds[0].size() == (1, TEST_EMBEDDING_DIM)
 
     embeds_list = make_list(embeds)
     true = ([-0.45190597, -0.16613023, 1.37900829, 2.5285573],
@@ -425,6 +419,9 @@ def test_suff_word_embeds_d4_2():
             [0.42241532, 0.267317, 1.37900829, 2.5285573],
             [-0.19550958, -0.96563596, -0.90807337, 0.54227364],
             [0.66135216, 0.26692411, 3.5869894, -1.83129013])
+
+    pairs = zip(embeds_list, true)
+    check_tensor_correctness(pairs)
 
 
 def test_pretrained_embeddings_d4_3():
@@ -520,6 +517,7 @@ def test_dev_preds_d4_7_norwegian():
         total += 1
     acc = float(correct) / total
     exp = 0.53
+    # print("Norwegian acc: ", acc)
     assert acc > exp, "ERROR: Expected {} Got {}".format(exp, acc)
 
 

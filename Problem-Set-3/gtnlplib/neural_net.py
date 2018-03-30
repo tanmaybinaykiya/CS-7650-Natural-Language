@@ -193,8 +193,8 @@ class SuffixAndWordEmbedding(nn.Module):
         # Note that embedding_dim should be the final (i.e. concatenated) word embedding size
         # suffix and word embeddings should be the same size
 
-        self.word_embeddings = nn.Embedding(len(self.word_to_ix), embedding_dim//2)
-        self.suffix_embeddings = nn.Embedding(len(self.suff_to_ix), embedding_dim//2)
+        self.word_embeddings = nn.Embedding(len(self.word_to_ix), embedding_dim // 2)
+        self.suffix_embeddings = nn.Embedding(len(self.suff_to_ix), embedding_dim // 2)
 
         # END STUDENT
 
@@ -216,7 +216,7 @@ class SuffixAndWordEmbedding(nn.Module):
             suffix_index_tensor = ag.Variable(torch.LongTensor([suffix_index]))
 
             word_embedding = self.word_embeddings(word_index_tensor)
-            suffix_embedding = self.word_embeddings(suffix_index_tensor)
+            suffix_embedding = self.suffix_embeddings(suffix_index_tensor)
             embeds.append(torch.cat((word_embedding, suffix_embedding), 1))
 
         # END STUDENT
@@ -283,24 +283,21 @@ class FFCombiner(nn.Module):
 
 class LSTMCombiner(nn.Module):
     """
-    A combiner network that does a sequence model over states, rather
-    than just a simple encoder like above.
+    A combiner network that does a sequence model over states, rather than just a simple encoder like above.
 
-    Input: 2 embeddings, the head embedding and modifier embedding
-    Output: Concatenate the 2 embeddings together and do one timestep
-        of the LSTM, returning the hidden state, which will be placed
-        on the stack.
+    Input:  2 embeddings, the head embedding and modifier embedding
+    Output: Concatenate the 2 embeddings together and do one timestep of the LSTM, returning the hidden state, which
+            will be placed on the stack.
     """
 
     def __init__(self, embedding_dim, num_layers, dropout):
         """
         Construct your LSTM component for use in forward().
-        Think about what size the input and output of your LSTM
-        should be
+        Think about what size the input and output of your LSTM should be
 
-        :param embedding_dim Dimensionality of stack embeddings
-        :param num_layers How many LSTM layers to use
-        :param dropout The amount of dropout to use in LSTM
+        :param embedding_dim: Dimensionality of stack embeddings
+        :param num_layers:    How many LSTM layers to use
+        :param dropout:       The amount of dropout to use in LSTM
         """
         super(LSTMCombiner, self).__init__()
         self.embedding_dim = embedding_dim
@@ -308,7 +305,8 @@ class LSTMCombiner(nn.Module):
         self.use_cuda = False
 
         # STUDENT
-        raise NotImplementedError
+        self.lstm = nn.LSTM(input_size=2 * embedding_dim, hidden_size=num_layers * embedding_dim, num_layers=num_layers,
+                            bidirectional=False, dropout=dropout)
         # END STUDENT
 
         self.hidden = self.init_hidden()
@@ -331,7 +329,11 @@ class LSTMCombiner(nn.Module):
         :param modifier_embed Embedding of the modifier of shape (1, embedding_dim)
         """
         # STUDENT
-        raise NotImplementedError
+        combined_embedding = torch.cat((head_embed, modifier_embed), dim=1)
+        combined_embedding = combined_embedding.view(1, 1, self.embedding_dim * 2)
+        output, self.hidden = self.lstm.forward(combined_embedding, self.hidden)
+
+        return output.view(1, self.embedding_dim)
         # END STUDENT
 
     def init_hidden(self):
@@ -420,12 +422,21 @@ class LSTMActionChooser(nn.Module):
         self.num_layers = num_layers
         self.use_cuda = False
         self.input_dim = input_dim
+
         # STUDENT
+
         # Construct in this order:
         # 1. The LSTM layer 
         # 2. The linear layer to predict actions
-        raise NotImplementedError
+
+        self.lstm = nn.LSTM(input_size=input_dim, hidden_size=num_layers * input_dim, num_layers=num_layers,
+                            bidirectional=False, dropout=dropout)
+        self.relu = nn.ReLU()
+        self.linear = nn.Linear(num_layers * input_dim, Actions.NUM_ACTIONS)
+        self.log_softmax = nn.LogSoftmax(dim=2)
+
         # END STUDENT
+
         self.hidden = self.init_hidden()
 
     def forward(self, inputs):
@@ -437,7 +448,13 @@ class LSTMActionChooser(nn.Module):
             (it is a row vector, with an entry for each action)
         """
         # STUDENT
-        raise NotImplementedError
+        i = inputs[0]
+        for inp in inputs[1:]:
+            i = torch.cat((i, inp))
+
+        i = i.view(-1, 1, self.input_dim)
+        output, self.hidden = self.lstm.forward(i, self.hidden)
+        return self.log_softmax(self.linear(self.relu(output)))
         # END STUDENT
 
     def init_hidden(self):

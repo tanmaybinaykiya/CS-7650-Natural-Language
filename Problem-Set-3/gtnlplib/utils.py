@@ -1,6 +1,7 @@
 import torch
 import torch.autograd as ag
-from gtnlplib.constants import END_OF_INPUT_TOK, HAVE_CUDA
+from gtnlplib.constants import END_OF_INPUT_TOK, HAVE_CUDA, NULL_STACK_TOK, ROOT_TOK
+
 
 import numpy as np
 
@@ -39,11 +40,18 @@ def initialize_with_pretrained(pretrained_embeds, word_embedding):
         or BiLSTMWordEmbedding)
     """
     # STUDENT
-    raise NotImplementedError
+    for word in pretrained_embeds:
+        emb = pretrained_embeds[word]
+        if word in word_embedding.word_to_ix:
+            word_index = word_embedding.word_to_ix[word]
+            word_embedding.word_embeddings.weight.data[word_index] = torch.FloatTensor(emb)
     # END STUDENT
 
 
 def get_suffix(word):
+    # if word == END_OF_INPUT_TOK or word == ROOT_TOK or word == NULL_STACK_TOK:
+    #     return word
+    # else:
     return word[-2:] if len(word) >= 2 else word
 
 
@@ -59,6 +67,7 @@ def build_suff_to_ix(word_to_ix):
     # STUDENT
 
     for word in word_to_ix:
+        # if word != END_OF_INPUT_TOK and word != ROOT_TOK and word != NULL_STACK_TOK:
         suffset.add(get_suffix(word))
 
     # END STUDENT

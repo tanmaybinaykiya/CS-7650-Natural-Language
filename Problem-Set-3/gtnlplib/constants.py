@@ -1,5 +1,5 @@
 prefix = "./"
-prefix = "../"
+# prefix = "../"
 
 # Data files
 EN_TRAIN_FILE = prefix + "data/en-ud-train.txt"

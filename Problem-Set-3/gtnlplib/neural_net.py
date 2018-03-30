@@ -144,7 +144,7 @@ class BiLSTMWordEmbedding(nn.Module):
 
         embeds = torch.cat(embeds, dim=0)
 
-        output, self.hidden = self.lstm.forward(embeds.view(len(sentence), 1, -1), self.hidden)
+        output, _ = self.lstm.forward(embeds.view(len(sentence), 1, -1), self.hidden)
 
         outp = []
         for emb in output:
@@ -454,7 +454,8 @@ class LSTMActionChooser(nn.Module):
 
         i = i.view(-1, 1, self.input_dim)
         output, self.hidden = self.lstm.forward(i, self.hidden)
-        return self.log_softmax(self.linear(self.relu(output))).view(1, 3)
+        value = self.log_softmax(self.linear(self.relu(output))).view(1, 3)
+        return value
         # END STUDENT
 
     def init_hidden(self):

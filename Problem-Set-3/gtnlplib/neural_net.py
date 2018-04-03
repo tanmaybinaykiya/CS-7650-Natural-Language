@@ -454,7 +454,7 @@ class LSTMActionChooser(nn.Module):
 
         i = i.view(-1, 1, self.input_dim)
         output, self.hidden = self.lstm.forward(i, self.hidden)
-        return self.log_softmax(self.linear(self.relu(output)))
+        return self.log_softmax(self.linear(self.relu(output))).view(1, 3)
         # END STUDENT
 
     def init_hidden(self):

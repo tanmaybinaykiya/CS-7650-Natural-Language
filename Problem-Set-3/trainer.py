@@ -47,6 +47,7 @@ def train_parser(parser, optimizer, dataset, n_epochs=1, n_train_insts=1000, nam
         print("Saving Model:")
         torch.save(parser.state_dict(), model_name)
 
+
 def build_parser(DROPOUT, LSTM_NUM_LAYERS, word_to_ix, pretrained_embeds):
     # Predef
 
@@ -69,8 +70,7 @@ def build_parser(DROPOUT, LSTM_NUM_LAYERS, word_to_ix, pretrained_embeds):
 
 
 def train(ETA, DROPOUT, LSTM_NUM_LAYERS, n_epochs, dataset, word_to_ix, pretrained_embeds, output_preds_filename,
-          dev_data, name, model_file_name = None):
-
+          dev_data, name, bakeoff_csv_name, output_test_filename, model_file_name=None ):
     parser = build_parser(DROPOUT, LSTM_NUM_LAYERS, word_to_ix, pretrained_embeds)
     optimizer = optim.SGD(parser.parameters(), lr=ETA, momentum=0.5, dampening=0, nesterov=True)
 
@@ -86,12 +86,23 @@ def train(ETA, DROPOUT, LSTM_NUM_LAYERS, n_epochs, dataset, word_to_ix, pretrain
         train_parser(parser, optimizer, dataset, n_epochs=n_epochs, n_train_insts=10000, name=name)
 
     # Evaluate
-    print("Creating file: ", output_preds_filename)
+    print("Creating files: ", output_preds_filename, output_test_filename, bakeoff_csv_name)
     output_preds(output_preds_filename, parser, dev_data)
+    evaluation.output_preds(output_test_filename, parser, dataset.test_data)
+    evaluation.kaggle_output(bakeoff_csv_name, parser, dataset.test_data)
+
     # print("LS: ")
     # !ls
     # print("Downloading...", output_preds_filename)
     # files.download(output_preds_filename)
+
+
+def transform_tuple_to_dict(tup):
+    dic = {}
+
+    for key, value in zip(tup[0], tup[1]):
+        dic[key] = value
+    return dic
 
 
 def train_norwegian():
@@ -100,14 +111,18 @@ def train_norwegian():
     bakeoff_DROPOUT_nr = 0.5
     bakeoff_LSTM_NUM_LAYERS_nr = 1
 
-    pretrained_embeds = pickle.load(open(PRETRAINED_EMBEDS_FILE, 'rb'))  # NOT DOING ANYTHING FOR NORWEGIAN
+    pretrained_embeds_nr = pickle.load(open(PRETRAINED_EMBEDS_FILE_NR, 'rb'),
+                                       encoding='latin1')  # NOT DOING ANYTHING FOR NORWEGIAN
+    pretrained_embeds = transform_tuple_to_dict(pretrained_embeds_nr)
+
     nr_dataset = Dataset(NR_TRAIN_FILE, NR_DEV_FILE, NR_TEST_FILE)
     word_to_ix_nr = {word: i for i, word in enumerate(nr_dataset.vocab)}
     nr_dev_data = [i.sentence for i in nr_dataset.dev_data]
 
     train(ETA=bakeoff_ETA_0_nr, DROPOUT=bakeoff_DROPOUT_nr, LSTM_NUM_LAYERS=bakeoff_LSTM_NUM_LAYERS_nr, n_epochs=5,
           dataset=nr_dataset, word_to_ix=word_to_ix_nr, pretrained_embeds=pretrained_embeds,
-          output_preds_filename="bakeoff-dev-nr.preds", dev_data=nr_dev_data, name="norweg")
+          output_preds_filename="bakeoff-dev-nr.preds", dev_data=nr_dev_data, name="norweg", bakeoff_csv_name="KAGGLE-bakeoff-preds-nr.csv",
+          output_test_filename="bakeoff-test-nr.preds")
 
 
 def train_english(model_file_name=None):
@@ -116,14 +131,18 @@ def train_english(model_file_name=None):
     bakeoff_DROPOUT_en = 0.5
     bakeoff_LSTM_NUM_LAYERS_en = 1
 
-    pretrained_embeds = pickle.load(open(PRETRAINED_EMBEDS_FILE, 'rb'))
+    pretrained_embeds = pickle.load(open("data/polyglot-en.pkl", 'rb'), encoding='latin1')
+    pretrained_embeds = transform_tuple_to_dict(pretrained_embeds)
+
     en_dataset = Dataset(EN_TRAIN_FILE, EN_DEV_FILE, EN_TEST_FILE)
     word_to_ix_en = {word: i for i, word in enumerate(en_dataset.vocab)}
     en_dev_data = [i.sentence for i in en_dataset.dev_data]
 
-    train(ETA=bakeoff_ETA_0_en, DROPOUT=bakeoff_DROPOUT_en, LSTM_NUM_LAYERS=bakeoff_LSTM_NUM_LAYERS_en, n_epochs=5,
+    train(ETA=bakeoff_ETA_0_en, DROPOUT=bakeoff_DROPOUT_en, LSTM_NUM_LAYERS=bakeoff_LSTM_NUM_LAYERS_en, n_epochs=4,
           dataset=en_dataset, word_to_ix=word_to_ix_en, pretrained_embeds=pretrained_embeds,
-          output_preds_filename="bakeoff-dev-en.preds", dev_data=en_dev_data, name="eng", model_file_name=model_file_name)
+          output_preds_filename="bakeoff-dev-en.preds", dev_data=en_dev_data, name="eng",
+          model_file_name=model_file_name, bakeoff_csv_name="KAGGLE-bakeoff-preds-en.csv",
+          output_test_filename="bakeoff-test-en.preds")
 
 
 if __name__ == '__main__':

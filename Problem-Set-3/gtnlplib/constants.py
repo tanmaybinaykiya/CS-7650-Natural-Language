@@ -9,6 +9,7 @@ NR_TRAIN_FILE = prefix + "data/no_bokmaal-ud-train.txt"
 NR_DEV_FILE = prefix + "data/no_bokmaal-ud-dev.txt"
 NR_TEST_FILE = prefix + "data/no_bokmaal-ud-test-hidden.txt"
 PRETRAINED_EMBEDS_FILE = prefix + "data/pretrained-embeds.pkl"
+PRETRAINED_EMBEDS_FILE_NR = prefix + "data/pretrained-embeds-nr.pkl"
 
 # Prediction output files
 

@@ -433,6 +433,10 @@ class LSTMActionChooser(nn.Module):
                             bidirectional=False, dropout=dropout)
         self.relu = nn.ReLU()
         self.linear = nn.Linear(num_layers * input_dim, Actions.NUM_ACTIONS)
+
+        # TODO DO NOT COMMIT THIS
+        # THIS SHOULD NOT GO IN 4.5
+        # torch.nn.init.xavier_uniform(self.linear.weight)
         self.log_softmax = nn.LogSoftmax(dim=2)
 
         # END STUDENT

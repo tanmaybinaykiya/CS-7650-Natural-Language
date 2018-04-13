@@ -5,6 +5,7 @@ import numpy as np
 from collections import Counter
 from sklearn.utils.linear_assignment_ import linear_assignment
 
+
 def f1(p_num, p_den, r_num, r_den, beta=1):
     p = 0 if p_den == 0 else p_num / p_den
     r = 0 if r_den == 0 else r_num / r_den
@@ -88,7 +89,6 @@ def ceafe(clusters, gold_clusters):
     similarity = sum(scores[matching[:, 0], matching[:, 1]])
     return similarity, len(clusters), similarity, len(gold_clusters)
 
-    
+
 def phi4(c1, c2):
     return 2 * len([m for m in c1 if m in c2]) / float(len(c1) + len(c2))
-    

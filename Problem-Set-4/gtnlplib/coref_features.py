@@ -2,8 +2,9 @@ import itertools
 from . import coref_rules
 from collections import defaultdict
 
+
 ## deliverable 3.1
-def minimal_features(markables,a,i):
+def minimal_features(markables, a, i):
     '''
     Compute a minimal set of features for antecedent a and mention i
 
@@ -13,15 +14,31 @@ def minimal_features(markables,a,i):
     :returns: dict of features
     :rtype: defaultdict
     '''
-    
+
     f = defaultdict(float)
     # STUDENT
-    
+
+    m_a = markables[a]
+    m_i = markables[i]
+
+    if a == i:
+        f["new-entity"] = 1
+    else:
+        if coref_rules.exact_match(m_a, m_i):
+            f["exact-match"] = 1
+        if coref_rules.match_last_token(m_a, m_i):
+            f["last-token-match"] = 1
+        if coref_rules.match_on_content(m_a, m_i):
+            f["content-match"] = 1
+        if not coref_rules.match_no_overlap(m_a, m_i):
+            f["crossover"] = 1
+
     # END STUDENT
     return f
 
+
 ## deliverable 3.5
-def distance_features(x,a,i,
+def distance_features(x, a, i,
                       max_mention_distance=5,
                       max_token_distance=10):
     '''
@@ -35,12 +52,13 @@ def distance_features(x,a,i,
     :returns: dict of features
     :rtype: defaultdict
     '''
-    
+
     f = defaultdict(float)
     # STUDENT
-    
+
     # END STUDENT
     return f
+
 
 ## deliverable 3.6
 def make_feature_union(feat_func_list):
@@ -53,7 +71,7 @@ def make_feature_union(feat_func_list):
     '''
     raise NotImplementedError
 
+
 ## deliverable 6
 def make_bakeoff_features():
     raise NotImplementedError
-

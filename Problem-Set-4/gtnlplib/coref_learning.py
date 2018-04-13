@@ -9,51 +9,47 @@ from . import utils, coref
 
 
 class FFCoref(nn.Module):
-    '''
+    """
     A component that scores coreference relations based on a one-hot feature vector
     Architecture: input features -> Linear layer -> tanh -> Linear layer -> score
-    '''
+    """
 
     # deliverable 3.2
     def __init__(self, feat_names, hidden_dim):
-        '''
+        """
         :param feat_names: list of keys to possible pairwise matching features
         :param hidden_dim: dimension of intermediate layer
-        '''
+        """
         super(FFCoref, self).__init__()
 
         # STUDENT
-        self.feature_to_idx = {feat: i for i, feat in enumerate(sorted(feat_names))}
-        self.idx_to_feature = {i: feat for i, feat in enumerate(sorted(feat_names))}
+        self.feature_to_idx = {feat: i for i, feat in enumerate(feat_names)}
+        self.idx_to_feature = {i: feat for i, feat in enumerate(feat_names)}
+
         self.feature_count = len(feat_names)
         self.net = nn.Sequential(
             nn.Linear(self.feature_count, hidden_dim),
             nn.Tanh(),
             nn.Linear(hidden_dim, 1))
 
-        self.l1 = nn.Linear(self.feature_count, hidden_dim)
-        self.l2 = nn.Linear(hidden_dim, 1)
-
         # END STUDENT
 
     # deliverable 3.2
     def forward(self, features):
-        '''
+        """
         :param features: defaultdict of pairwise matching features and their values for some pair
         :returns: model score
         :rtype: 1x1 torch Variable
-        '''
+        """
 
         feat = ag.Variable(torch.FloatTensor(1, self.feature_count).zero_())
         for feature in features.keys():
             feat[0, self.feature_to_idx[feature]] = features[feature]
-
-        # return self.net(feat)
-        return self.l2(torch.tanh(self.l1(feat)))
+        return self.net(feat)
 
     # deliverable 3.3
     def score_instance(self, markables, feats, i):
-        '''
+        """
         A function scoring all coref candidates for a given markable
         Don't forget the new-entity option!
         :param markables: list of all markables in the document
@@ -61,12 +57,12 @@ class FFCoref(nn.Module):
         :param feats: feature extraction function
         :returns: list of scores for all candidates
         :rtype: torch.FloatTensor of dimensions 1x(i+1)
-        '''
+        """
         raise NotImplementedError
 
     # deliverable 3.4
     def instance_top_scores(self, markables, feats, i, true_antecedent):
-        '''
+        """
         Find the top-scoring true and false candidates for i in the markable.
         If no false candidates exist, return (None, None).
         :param markables: list of all markables in the document
@@ -75,7 +71,7 @@ class FFCoref(nn.Module):
         :param feats: feature extraction function
         :returns trues_max: best-scoring true antecedent
         :returns false_max: best-scoring false antecedent
-        '''
+        """
         scores = self.score_instance(markables, feats, i)
 
         raise NotImplementedError

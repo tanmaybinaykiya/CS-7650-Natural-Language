@@ -64,7 +64,7 @@ class FFCoref(nn.Module):
         for ant_index, ant in enumerate(markables[:i + 1]):
             feature = feats(markables, ant_index, i)
             score_var = self.forward(feature)
-            scores[0, ant_index] = score_var.data[0]
+            scores[0, ant_index] = score_var[0]
 
         return scores
 
@@ -80,15 +80,29 @@ class FFCoref(nn.Module):
         :returns trues_max: best-scoring true antecedent
         :returns false_max: best-scoring false antecedent
         """
-        scores = self.score_instance(markables, feats, i)
+        if i == 0 or i == true_antecedent:
+            return None, None
+        else:
+            scores = self.score_instance(markables, feats, i)
 
-        raise NotImplementedError
+            all_trues_indices = torch.LongTensor(
+                [index for index in range(0, i) if markables[index].entity == markables[true_antecedent].entity])
+            all_false_indices = torch.LongTensor(
+                [index for index in range(0, i) if markables[index].entity != markables[true_antecedent].entity])
+
+            if all_trues_indices.shape[0] == i:
+                return None, None
+
+            zero_tensor = torch.LongTensor([0])
+            trues_max_val = torch.max(scores[zero_tensor, all_trues_indices])
+            false_max_val = torch.max(scores[zero_tensor, all_false_indices])
+            return trues_max_val, false_max_val
 
 
 def train(model, optimizer, markable_set, feats, margin=1.0, epochs=2):
     _zero = ag.Variable(torch.Tensor([0]))  # this var is reusable
     model.train()
-    for i in range(epochs):
+    for _ in range(epochs):
         tot_loss = 0.0
         instances = 0
         for doc in markable_set:
@@ -115,3 +129,15 @@ def evaluate(model, markable_set, feats):
 # helper
 def make_resolver(features, model):
     return lambda markables: [utils.argmax(model.score_instance(markables, features, i)) for i in range(len(markables))]
+
+
+def custom_max(vector, skip_index):
+    """
+    Returns the argmax of the autograd vector provided
+    :param vector:
+    :return: argmax, value
+    """
+    vec_ft = vector
+    if not (skip_index == 0 or skip_index == vector.shape[1] - 1):
+        vec_ft = torch.cat((vector[0, 0:skip_index], vector[0, skip_index + 1:]), 0)
+    return torch.max(vec_ft)

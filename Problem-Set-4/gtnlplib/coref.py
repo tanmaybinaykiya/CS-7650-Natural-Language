@@ -176,6 +176,7 @@ def eval_on_dataset(resolver, markables_list):
     tot_fn = 0
     for markables in markables_list:
         sys_ant = resolver(markables)
+        # print("sys_ant: ", sys_ant, markables)
         tot_tp += sum(get_tp(sys_ant, markables))
         tot_fp += sum(get_fp(sys_ant, markables))
         tot_fn += sum(get_fn(sys_ant, markables))

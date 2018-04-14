@@ -3,6 +3,7 @@ import torch.autograd as ag
 
 UNK_TOKEN = '<UNK>'
 
+
 def to_scalar(var):
     '''
     Wrap up the terse, obnoxious code to go from torch.Tensor to
@@ -13,12 +14,14 @@ def to_scalar(var):
     else:
         return var.view(-1).tolist()[0]
 
+
 def argmax(vector):
     '''
     Takes in a row vector (1xn) and returns its argmax
     '''
     _, idx = torch.max(vector, 1)
     return to_scalar(idx)
+
 
 ## deliverable 4.5
 def initialize_with_pretrained(pretrained_embeds, word_embedding, use_cuda=False):
@@ -33,4 +36,3 @@ def initialize_with_pretrained(pretrained_embeds, word_embedding, use_cuda=False
     :param word_embedding: The network component to initialize (i.e, a BiLSTMWordEmbedding)
     '''
     raise NotImplementedError
-

@@ -5,10 +5,10 @@ UNK_TOKEN = '<UNK>'
 
 
 def to_scalar(var):
-    '''
+    """
     Wrap up the terse, obnoxious code to go from torch.Tensor to
     a python int / float
-    '''
+    """
     if isinstance(var, ag.Variable):
         return var.data.view(-1).tolist()[0]
     else:
@@ -16,16 +16,16 @@ def to_scalar(var):
 
 
 def argmax(vector):
-    '''
+    """
     Takes in a row vector (1xn) and returns its argmax
-    '''
+    """
     _, idx = torch.max(vector, 1)
     return to_scalar(idx)
 
 
-## deliverable 4.5
+# deliverable 4.5
 def initialize_with_pretrained(pretrained_embeds, word_embedding, use_cuda=False):
-    '''
+    """
     Initialize the embedding lookup table of word_embedding with the embeddings
     from pretrained_embeds.
     Remember that word_embedding has a word_to_ix member you will have to use.
@@ -34,5 +34,12 @@ def initialize_with_pretrained(pretrained_embeds, word_embedding, use_cuda=False
     :param pretrained_embeds: dict mapping word to python list of floats (the embedding
         of that word)
     :param word_embedding: The network component to initialize (i.e, a BiLSTMWordEmbedding)
-    '''
-    raise NotImplementedError
+    """
+
+    unknown_embed = pretrained_embeds[UNK_TOKEN]
+
+    for word in word_embedding.word_to_ix:
+        emb = unknown_embed
+        if word in pretrained_embeds:
+            emb = pretrained_embeds[word]
+        word_embedding.word_embeddings.weight.data[word_embedding.word_to_ix[word]] = torch.FloatTensor(emb)

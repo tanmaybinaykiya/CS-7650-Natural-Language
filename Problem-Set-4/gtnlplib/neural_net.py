@@ -40,6 +40,10 @@ class BiLSTMWordEmbedding(nn.Module):
         # is bidirectional, we need to make the output of each direction hidden_dim/2
         # name your embedding member "word_embeddings"
 
+        self.word_embeddings = nn.Embedding(num_embeddings=len(word_to_ix), embedding_dim=word_embedding_dim)
+        self.lstm = nn.LSTM(input_size=word_embedding_dim, hidden_size=hidden_dim // 2, num_layers=1,
+                            bidirectional=True, dropout=dropout)
+
         # END STUDENT
 
         self.hidden = self.init_hidden()
@@ -61,9 +65,24 @@ class BiLSTMWordEmbedding(nn.Module):
         assert self.word_to_ix is not None, "ERROR: Make sure to set word_to_ix on \
                 the embedding lookup components"
         # STUDENT
+        embeds = []
 
+        for word in document:
+            word_index = self.word_to_ix[word]
+            index_tensor = ag.Variable(torch.LongTensor([word_index]))
+            embedding = self.word_embeddings(index_tensor)
+            embeds.append(embedding)
+
+        embeds = torch.cat(embeds, dim=0)
+
+        output, _ = self.lstm.forward(embeds.view(len(document), 1, -1), self.hidden)
+
+        outp = []
+        for emb in output:
+            outp.append(emb)
+
+        return outp
         # END STUDENT
-        raise NotImplementedError  # change this, obviously.
 
     def init_hidden(self):
         """
@@ -100,6 +119,9 @@ class AttentionBasedMarkableEmbedding(nn.Module):
         super(AttentionBasedMarkableEmbedding, self).__init__()
         # STUDENT
 
+        self.embedding_dim = embedding_dim
+        self.u = nn.Linear(self.embedding_dim, 1)
+
         # END STUDENT
         self.use_cuda = False
 
@@ -110,7 +132,12 @@ class AttentionBasedMarkableEmbedding(nn.Module):
         :param markable: the markable for which we want a weighted embedding
         :returns: attended embedding for markable (1d vector)
         """
-        raise NotImplementedError
+
+        span_embeddings = embeddings[markable.start_token: markable.end_token]
+        e = torch.cat(span_embeddings)
+        a = self.u(e)
+        a = F.softmax(a, dim=0)
+        return torch.sum(a.mul(e), dim=0)
 
     def to_cuda(self):
         self.use_cuda = True
@@ -134,11 +161,20 @@ class SequentialScorer(nn.Module):
         super(SequentialScorer, self).__init__()
 
         self.feat_set = feat_set
+        self.feat_emb_dim = feat_emb_dim
+        self.feat_to_idx = {feat: i for i, feat in enumerate(feat_set)}
+        self.idx_to_feat = {i: feat for i, feat in enumerate(feat_set)}
 
         # STUDENT
         # keep this order to pass tests
-        # self.feat_off_embs =
-        # self.feat_on_embs =
+        self.feat_off_embs = nn.Embedding(num_embeddings=len(feat_set), embedding_dim=feat_emb_dim)
+        self.feat_on_embs = nn.Embedding(num_embeddings=len(feat_set), embedding_dim=feat_emb_dim)
+
+        self.net = nn.Sequential(
+            nn.Linear(2 * mark_embedding_dim + feat_emb_dim * len(feat_set), hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, 1)
+        )
 
         # END STUDENT
         self.use_cuda = False
@@ -152,7 +188,25 @@ class SequentialScorer(nn.Module):
         :returns: score
         :rtype: 1x1 Variable
         """
-        raise NotImplementedError
+
+        feature_emb = ag.Variable(torch.zeros(len(self.feat_set), self.feat_emb_dim))
+
+        for i in range(len(self.feat_set)):
+            feature_emb[i] = self.feat_off_embs(ag.Variable(torch.LongTensor([i])))
+
+        for i, feat in enumerate(pos_feats):
+            feature_emb[self.feat_to_idx[feat]] = self.feat_on_embs(ag.Variable(torch.LongTensor([i])))
+
+        # Bad Hack because ipnb has a vector instead of matrix
+        if emb_i.shape[0] == 1:
+            feature_emb = feature_emb.view(1, len(self.feat_set) * self.feat_emb_dim)
+            input = torch.cat((emb_i, emb_a, feature_emb), dim=1)
+        else:
+            feature_emb = feature_emb.view(len(self.feat_set) * self.feat_emb_dim)
+            input = torch.cat((emb_i, emb_a, feature_emb))
+
+        # print("input: ", input.data, pos_feats)
+        return self.net(input)
 
     # deliverable 4.4
     def score_instance(self, doc_embs, markables, i, feats):
@@ -171,9 +225,14 @@ class SequentialScorer(nn.Module):
             return [k for k, v in feats(markables, a, i).items() if v > 0]
 
         # STUDENT
+        scores = ag.Variable(torch.FloatTensor(1, i + 1))
 
+        for ant_index, ant in enumerate(markables[:i + 1]):
+            score_var = self.forward(doc_embs[i], doc_embs[ant_index], get_pos_feats(markables, ant_index, i))
+            scores[0, ant_index] = score_var[0]
+
+        return scores
         # END STUDENT
-        raise NotImplementedError  # change this
 
     # deliverable 4.4
     def instance_top_scores(self, doc_embs, markables, i, true_antecedent, feats):
@@ -189,7 +248,25 @@ class SequentialScorer(nn.Module):
         :returns trues_max: best-scoring true antecedent
         :returns false_max: best-scoring false antecedent
         """
-        raise NotImplementedError
+
+        if i == 0 or i == true_antecedent:
+            return None, None
+        else:
+            scores = self.score_instance(doc_embs, markables, i, feats)
+
+            all_trues_indices = torch.LongTensor(
+                [index for index in range(0, i) if markables[index].entity == markables[true_antecedent].entity])
+            all_false_indices = torch.LongTensor(
+                [index for index in range(0, i) if markables[index].entity != markables[true_antecedent].entity])
+
+            if all_trues_indices.shape[0] == i:
+                return None, None
+
+            zero_tensor = torch.LongTensor([0])
+            trues_max_val = torch.max(scores[zero_tensor, all_trues_indices])
+            false_max_val = torch.max(scores[zero_tensor, all_false_indices])
+            return trues_max_val, false_max_val
+
 
     def to_cuda(self):
         self.use_cuda = True

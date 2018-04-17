@@ -177,12 +177,11 @@ def test_dev_acc_f1_d2_7():
 
 # deliverable 2.7b
 # students can't run this
-def test_test_acc_f1_d2_7():
+def _test_test_acc_f1_d2_7():
     f, r, p = coref.eval_predictions('../predictions/rules-test.preds', all_markables_te);
     assert_greater(f, .499)
     assert_greater(r, .381)
     assert_greater(p, .723)
-
 
 ########################3
 

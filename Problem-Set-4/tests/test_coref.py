@@ -183,7 +183,7 @@ def _test_test_acc_f1_d2_7():
     assert_greater(r, .381)
     assert_greater(p, .723)
 
-########################3
+########################
 
 # deliverable 3.1
 def test_minimal_features_d3_1():

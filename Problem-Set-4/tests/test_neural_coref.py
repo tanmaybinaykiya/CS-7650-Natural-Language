@@ -89,6 +89,9 @@ def test_ffcoref_score_instance_top_scores_d3_4():
     s_t2, s_f2 = ff_coref.instance_top_scores(markables, minimal_features, 0, 0)
     eq_(s_t2, None)
     eq_(s_f2, None)
+    # best_true_score, best_false_score = ff_coref.instance_top_scores(markables, minimal_features, 13, 4)
+    # assert_almost_equals(float(s_t), -0.1148, places=4)
+    # assert_almost_equals(float(s_f), -0.0424, places=4)
 
 
 # ===-------------------------------------------------------------------------------------------===

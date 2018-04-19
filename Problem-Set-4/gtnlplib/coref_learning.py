@@ -86,9 +86,12 @@ class FFCoref(nn.Module):
             scores = self.score_instance(markables, feats, i)
 
             all_trues_indices = torch.LongTensor(
-                [index for index in range(0, i) if markables[index].entity == markables[true_antecedent].entity])
+                [index for index in range(0, i) if markables[index].entity == markables[i].entity])
             all_false_indices = torch.LongTensor(
-                [index for index in range(0, i) if markables[index].entity != markables[true_antecedent].entity])
+                [index for index in range(0, i) if markables[index].entity != markables[i].entity])
+
+            if not all_trues_indices.shape:
+                all_trues_indices = torch.LongTensor([i])
 
             if all_trues_indices.shape[0] == i:
                 return None, None
